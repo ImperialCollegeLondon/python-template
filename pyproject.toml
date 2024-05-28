@@ -13,7 +13,6 @@ pytest-cov = "^5.0.0"
 pytest-mypy = "^0.10.0"
 pytest-mock = "^3.7.0"
 pre-commit = "^3.0.4"
-ruff = "^0.4.4"
 
 [tool.mypy]
 disallow_any_explicit = true
