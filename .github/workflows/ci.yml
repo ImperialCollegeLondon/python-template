@@ -7,16 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-links:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: gaurav-nelson/github-action-markdown-link-check@v1
-        name: Check links in markdown files
-        with:
-          use-quiet-mode: "yes"
-          use-verbose-mode: "yes"
-
   test:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -51,3 +41,10 @@ jobs:
       - name: Run tests
         working-directory: my_project
         run: poetry run pytest
+
+      - name: Run pre-commit hooks for project
+        working-directory: my_project
+        run: |
+          git init
+          git add .
+          poetry run pre-commit run -a

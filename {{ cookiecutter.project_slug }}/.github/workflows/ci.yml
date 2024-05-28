@@ -1,26 +1,13 @@
 name: Test and build
 
-on: [push, pull_request, workflow_call]
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-  qa:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pre-commit/action@v3.0.1
-
-  check-links:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: gaurav-nelson/github-action-markdown-link-check@v1
-        name: Check links in markdown files
-        with:
-          use-quiet-mode: "yes"
-          use-verbose-mode: "yes"
-
   test:
-    needs: qa
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
