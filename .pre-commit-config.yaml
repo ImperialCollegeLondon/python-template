@@ -16,6 +16,7 @@ repos:
         # Prettier supports many other file formats (e.g., JavaScript, HTML; see
         # https://prettier.io for list). Add other types here.
         types_or: [yaml, json]
+        exclude: "{{ cookiecutter.project_slug }}/.+"
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.40.0
     hooks:

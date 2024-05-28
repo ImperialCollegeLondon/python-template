@@ -1,4 +1,4 @@
-name: Test and build
+name: Tests (pip-tools)
 
 on:
   push:
@@ -22,29 +22,24 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Poetry
-        uses: abatilo/actions-poetry@v3.0.0
-        with:
-          poetry-version: 1.2.2
-
       - name: Install cookiecutter
         run: pip install cookiecutter
 
       - name: Create project from template
         # Choose default options
-        run: cookiecutter --no-input .
+        run: cookiecutter . --no-input packaging=pip-tools
 
       - name: Install project dependencies
         working-directory: my_project
-        run: poetry install
+        run: pip install -r dev-requirements.txt
 
       - name: Run tests
         working-directory: my_project
-        run: poetry run pytest
+        run: pytest
 
       - name: Run pre-commit hooks for project
         working-directory: my_project
         run: |
           git init
           git add .
-          poetry run pre-commit run -a
+          pre-commit run -a

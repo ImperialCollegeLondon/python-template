@@ -1,3 +1,4 @@
+{%- if cookiecutter.packaging == "poetry" -%}
 [tool.poetry]
 name = "{{ cookiecutter.project_slug }}"
 version = "0.1.0"
@@ -17,6 +18,41 @@ pytest-mypy = "^0.10.0"
 pytest-mock = "^3.7.0"
 pre-commit = "^3.0.4"
 
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+{%- elif cookiecutter.packaging == "pip-tools" -%}
+[project]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.1.0"
+description = "{{ cookiecutter.project_description }}"
+authors = [
+    { name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}" },
+    { name = "Imperial College London RSE Team", email = "ict-rse-team@imperial.ac.uk" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "mypy",
+    "pip-tools",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-mypy",
+    "pytest-mock"
+]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+exclude = ["htmlcov"] # Exclude the coverage report file from setuptools package finder
+{%- endif %}
+
 [tool.mypy]
 disallow_any_explicit = true
 disallow_any_generics = true
@@ -31,10 +67,6 @@ disallow_untyped_defs = false
 
 [tool.pytest.ini_options]
 addopts = "-v --mypy -p no:warnings --cov={{ cookiecutter.project_slug }} --cov-report=html --doctest-modules --ignore={{ cookiecutter.project_slug }}/__main__.py"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 target-version = "py312"
