@@ -44,4 +44,7 @@ jobs:
 
       - name: Run pre-commit hooks for project
         working-directory: my_project
-        run: poetry run pre-commit run -a
+        run: |
+          git init
+          git add .
+          poetry run pre-commit run -a
