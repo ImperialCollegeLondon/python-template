@@ -4,12 +4,14 @@
     "project_description": "",
     "author": "Jane Doe",
     "author_email": "jane_doe@imperial.ac.uk",
+    "use_bsd3_licence": false,
     "_copy_without_render": [".github"],
     "__prompts__": {
         "project_name": "Enter a human-readable name for the project",
         "project_slug": "Enter a name for the Python package",
         "project_description": "Enter a brief description of the project",
         "author": "Enter your full name",
-        "author_email": "Enter your email address"
+        "author_email": "Enter your email address",
+        "use_bsd3_licence": "Whether to use Imperial's default open-source licence (BSD 3-clause)"
     }
 }
