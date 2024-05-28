@@ -1,4 +1,4 @@
-"""The main module for MyProject."""
+"""The main module for {{ cookiecutter.project_name }}."""
 
 from importlib.metadata import version
 
