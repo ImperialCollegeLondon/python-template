@@ -1,0 +1,15 @@
+{
+    "project_name": "My Project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "project_description": "",
+    "author": "Jane Doe",
+    "author_email": "jane_doe@imperial.ac.uk",
+    "_copy_without_render": [".github"],
+    "__prompts__": {
+        "project_name": "Enter a human-readable name for the project",
+        "project_slug": "Enter a name for the Python package",
+        "project_description": "Enter a brief description of the project",
+        "author": "Enter your full name",
+        "author_email": "Enter your email address"
+    }
+}

@@ -1,8 +1,11 @@
 [tool.poetry]
-name = "MyProject"
+name = "{{ cookiecutter.project_slug }}"
 version = "0.1.0"
-description = ""
-authors = ["Jane Doe <jane_doe@some_email.com>"]
+description = "{{ cookiecutter.project_description }}"
+authors = [
+    "{{ cookiecutter.author }} <{{ cookiecutter.author_email }}>",
+    "Imperial College London RSE Team <ict-rse-team@imperial.ac.uk>"
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -27,7 +30,7 @@ module = "tests.*"
 disallow_untyped_defs = false
 
 [tool.pytest.ini_options]
-addopts = "-v --mypy -p no:warnings --cov=myproject --cov-report=html --doctest-modules --ignore=myproject/__main__.py"
+addopts = "-v --mypy -p no:warnings --cov={{ cookiecutter.project_slug }} --cov-report=html --doctest-modules --ignore={{ cookiecutter.project_slug }}/__main__.py"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

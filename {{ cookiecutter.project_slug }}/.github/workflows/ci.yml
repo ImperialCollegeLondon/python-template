@@ -1,12 +1,14 @@
 name: Test and build
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
+on: [push, pull_request, workflow_call]
 
 jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pre-commit/action@v3.0.1
+
   check-links:
     runs-on: ubuntu-latest
     steps:
@@ -18,6 +20,7 @@ jobs:
           use-verbose-mode: "yes"
 
   test:
+    needs: qa
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -37,17 +40,8 @@ jobs:
         with:
           poetry-version: 1.2.2
 
-      - name: Install cookiecutter
-        run: pip install cookiecutter
-
-      - name: Create project from template
-        # Choose default options
-        run: cookiecutter --no-input .
-
-      - name: Install project dependencies
-        working-directory: my_project
+      - name: Install dependencies
         run: poetry install
 
       - name: Run tests
-        working-directory: my_project
         run: poetry run pytest

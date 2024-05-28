@@ -3,6 +3,7 @@ repos:
     rev: v4.6.0
     hooks:
       - id: check-merge-conflict
+      - id: debug-statements
       - id: trailing-whitespace
       - id: end-of-file-fixer
   - repo: https://github.com/python-jsonschema/check-jsonschema
@@ -16,6 +17,16 @@ repos:
         # Prettier supports many other file formats (e.g., JavaScript, HTML; see
         # https://prettier.io for list). Add other types here.
         types_or: [yaml, json]
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.4.4"
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: "v1.10.0"
+    hooks:
+      - id: mypy
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.40.0
     hooks:
