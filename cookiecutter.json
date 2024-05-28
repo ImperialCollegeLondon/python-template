@@ -1,7 +1,7 @@
 {
     "project_name": "My Project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
-    "project_description": "",
+    "project_description": "[Description for project.]",
     "author": "Jane Doe",
     "author_email": "jane_doe@imperial.ac.uk",
     "use_bsd3_licence": false,
