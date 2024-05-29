@@ -31,7 +31,7 @@ jobs:
 
       - name: Install project dependencies
         working-directory: my_project
-        run: pip install -r dev-requirements.txt
+        run: pip install .[dev]
 
       - name: Run tests
         working-directory: my_project
