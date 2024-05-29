@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  test-poetry:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
