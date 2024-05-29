@@ -1,52 +1,30 @@
-# Poetry Template
+<!-- markdownlint-disable MD041 -->
+[![poetry](https://github.com/alexdewar/cookiecutter-python-template/actions/workflows/ci-poetry.yml/badge.svg)](https://github.com/alexdewar/cookiecutter-python-template/actions/workflows/ci-poetry.yml)
+[![pip-tools](https://github.com/alexdewar/cookiecutter-python-template/actions/workflows/ci-pip-tools.yml/badge.svg)](https://github.com/alexdewar/cookiecutter-python-template/actions/workflows/ci-pip-tools.yml)
 
-[![Test and build](https://github.com/ImperialCollegeLondon/poetry_template_2/actions/workflows/ci.yml/badge.svg)](https://github.com/ImperialCollegeLondon/poetry_template_2/actions/workflows/ci.yml)
+# Python project template
 
-This is a minimal Python 3.12 application that uses [poetry](https://python-poetry.org) for packaging and dependency management. It also provides [pre-commit](https://pre-commit.com/) hooks (for [ruff](https://pypi.org/project/ruff/) and [mypy](https://mypy.readthedocs.io/en/stable/)) and automated tests using [pytest](https://pytest.org/) and [GitHub Actions](https://github.com/features/actions). Pre-commit hooks are automatically kept updated with a dedicated GitHub Action, this can be removed and replace with [pre-commit.ci](https://pre-commit.ci) if using an public repo. It was developed by the [Imperial College Research Computing Service](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/).
+This repo contains a [`cookiecutter`] template for a Python project, including
+[`pre-commit`] hooks for linting and GitHub Actions for automatically running tests
+using [`pytest`].
+
+The template supports two Python packaging tools: [`poetry`] and [`pip-tools`].
+
+[`cookiecutter`]: https://cookiecutter.readthedocs.io/en/stable/
+[`pre-commit`]: https://pre-commit.com/
+[`pytest`]: https://pytest.org/
+[`poetry`]: https://python-poetry.org/
+[`pip-tools`]: https://github.com/jazzband/pip-tools
 
 ## Usage
 
-To use this repository as a template for your own application:
+To use this template for your own application:
 
-1. [Download and install Poetry](https://python-poetry.org/docs/#installation) following the instructions for your OS.
-2. Click the green "Use this template" button above
-3. Name and create your repository
-4. Clone your new repository and make it your working directory
-5. Replace instances of `myproject` with your own application name. Edit:
-   - `pyproject.toml`
-   - `tests/test_myproject.py`
-   - Rename `myproject` directory
-6. Set up the virtual environment:
+1. [Install `cookiecutter`] following the instructions for your OS.
+1. Create your own project using this template: `cookiecutter
+   gh:alexdewar/cookiecutter-python-template`
+1. Choose the options you want for your project
+1. To get started, follow the instructions in the readme of the newly created project
 
-   ```bash
-   poetry install
-   ```
-
-7. Activate the virtual environment (alternatively, ensure any python-related command is preceded by `poetry run`):
-
-   ```bash
-   poetry shell
-   ```
-
-8. Install the git hooks:
-
-   ```bash
-   pre-commit install
-   ```
-
-9. Run the main app:
-
-   ```bash
-   python -m myproject
-   ```
-
-10. Run the tests:
-
-    ```bash
-    pytest
-    ```
-
-### Publishing
-
-The GitHub workflow includes an action to publish on release.
-To run this action, uncomment the commented portion of `publish.yml`, and modify the steps for the desired behaviour (ie. publishing a Docker image, publishing to PyPI, deploying documentation etc.)
+[Install `cookiecutter`]:
+    https://cookiecutter.readthedocs.io/en/stable/README.html#installation
