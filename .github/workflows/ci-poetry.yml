@@ -1,0 +1,50 @@
+name: Tests (poetry)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        python-version: ["3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v3.0.0
+        with:
+          poetry-version: 1.2.2
+
+      - name: Install cookiecutter
+        run: pip install cookiecutter
+
+      - name: Create project from template
+        # Choose default options
+        run: cookiecutter . --no-input packaging=poetry
+
+      - name: Install project dependencies
+        working-directory: my_project
+        run: poetry install
+
+      - name: Run tests
+        working-directory: my_project
+        run: poetry run pytest
+
+      - name: Run pre-commit hooks for project
+        working-directory: my_project
+        run: |
+          git init
+          git add .
+          poetry run pre-commit run -a
