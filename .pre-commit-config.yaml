@@ -21,3 +21,8 @@ repos:
     rev: v0.41.0
     hooks:
       - id: markdownlint-fix
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.3.0
+    hooks:
+      - id: codespell
+        args: [-L, .codespell_ignore.txt]
