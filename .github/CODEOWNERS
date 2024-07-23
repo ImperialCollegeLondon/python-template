@@ -1,2 +1,6 @@
-# Ensure that all PRs must be approved by at least one of the below
+# Automatically tag the following users to review PRs
 * @alexdewar @dalonsoa @cc-a @AdrianDAlessandro
+
+# Exclude the following files as they are often updated by bots
+.pre-commit-config.yaml
+{{\ cookiecutter.project_slug\ }}/*requirements.txt
