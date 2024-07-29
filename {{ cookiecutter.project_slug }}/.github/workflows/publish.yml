@@ -13,15 +13,15 @@ jobs:
   #       uses: docker/login-action@v3
   #       with:
   #         registry: ghcr.io
-  #         username: ${{ github.actor }}
-  #         password: ${{ secrets.GITHUB_TOKEN }}
+  #         username: ${{ "{{" }} github.actor {{ "}}" }}
+  #         password: ${{ "{{" }} secrets.GITHUB_TOKEN {{ "}}" }}
   #     - name: Get image metadata
   #       id: meta
   #       uses: docker/metadata-action@v5
   #       with:
-  #         images: ghcr.io/${{ github.repository }}
+  #         images: ghcr.io/${{ "{{" }} github.repository {{ "}}" }}
   #     - name: Build and push Docker image
   #       uses: docker/build-push-action@v5
   #       with:
   #         push: true
-  #         tags: ${{ steps.meta.outputs.tags }}
+  #         tags: ${{ "{{" }} steps.meta.outputs.tags {{ "}}" }}
