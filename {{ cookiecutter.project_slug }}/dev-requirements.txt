@@ -48,7 +48,7 @@ pyproject-hooks==1.1.0
     # via
     #   build
     #   pip-tools
-pytest==8.1.1
+pytest==8.3.2
     # via
     #   datahub (pyproject.toml)
     #   pytest-cov
