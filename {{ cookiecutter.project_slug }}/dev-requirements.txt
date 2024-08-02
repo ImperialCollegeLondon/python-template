@@ -12,7 +12,7 @@ cfgv==3.4.0
     # via pre-commit
 click==8.1.7
     # via pip-tools
-coverage[toml]==7.5.0
+coverage[toml]==7.6.0
     # via pytest-cov
 distlib==0.3.8
     # via virtualenv
@@ -20,7 +20,7 @@ filelock==3.13.1
     # via
     #   pytest-mypy
     #   virtualenv
-identify==2.5.33
+identify==2.6.0
     # via pre-commit
 iniconfig==2.0.0
     # via pytest
@@ -48,7 +48,7 @@ pyproject-hooks==1.1.0
     # via
     #   build
     #   pip-tools
-pytest==8.1.1
+pytest==8.3.2
     # via
     #   datahub (pyproject.toml)
     #   pytest-cov
@@ -56,7 +56,7 @@ pytest==8.1.1
     #   pytest-mypy
 pytest-cov==5.0.0
     # via datahub (pyproject.toml)
-pytest-mock==3.12.0
+pytest-mock==3.14.0
     # via datahub (pyproject.toml)
 pytest-mypy==0.10.3
     # via datahub (pyproject.toml)
