@@ -36,7 +36,7 @@ packaging==24.1
     # via
     #   build
     #   pytest
-pip-tools==7.4.0
+pip-tools==7.4.1
     # via datahub (pyproject.toml)
 platformdirs==4.2.1
     # via virtualenv
