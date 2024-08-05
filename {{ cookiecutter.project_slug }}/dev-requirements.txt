@@ -16,7 +16,7 @@ coverage[toml]==7.6.0
     # via pytest-cov
 distlib==0.3.8
     # via virtualenv
-filelock==3.13.1
+filelock==3.15.4
     # via
     #   pytest-mypy
     #   virtualenv
@@ -32,7 +32,7 @@ mypy-extensions==1.0.0
     # via mypy
 nodeenv==1.9.1
     # via pre-commit
-packaging==24.0
+packaging==24.1
     # via
     #   build
     #   pytest
@@ -62,11 +62,11 @@ pytest-mypy==0.10.3
     # via datahub (pyproject.toml)
 pyyaml==6.0.1
     # via pre-commit
-ruff==0.5.4
+ruff==0.5.6
     # via datahub (pyproject.toml)
-typing-extensions==4.9.0
+typing-extensions==4.12.2
     # via mypy
-virtualenv==20.26.1
+virtualenv==20.26.3
     # via pre-commit
 wheel==0.43.0
     # via pip-tools

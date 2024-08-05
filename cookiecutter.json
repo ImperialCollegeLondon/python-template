@@ -11,6 +11,8 @@
     "use_bsd3_licence": false,
     "add_precommit_workflows": true,
     "automerge_bot_prs": false,
+    "use_windows_ci_runner": false,
+    "use_macos_ci_runner": false,
     "__prompts__": {
         "project_name": "Enter a human-readable name for the project",
         "project_slug": "Enter a name for the Python package",
@@ -20,6 +22,8 @@
         "packaging": "Select the Python packaging tool you wish to use",
         "use_bsd3_licence": "Whether to use Imperial's default open-source licence (BSD 3-clause)",
         "add_precommit_workflows": "Add Github Actions to run pre-commit hooks (only needed for private repositories)",
+        "use_windows_ci_runner": "Add a GitHub Actions runner for Windows (needed if your software targets Windows)",
+        "use_macos_ci_runner": "Add a GitHub Actions runner for macOS (needed if your software targets macOS - ARM)",
         "automerge_bot_prs": "Whether to automatically merge PRs from bots including dependabot"
     }
 }
