@@ -5,23 +5,23 @@ repos:
       - id: check-merge-conflict
       - id: trailing-whitespace
       - id: end-of-file-fixer
+      - id: pretty-format-json
+        args: [--autofix, --indent, '4', --no-sort]
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.14.0
+    hooks:
+      - id: pretty-format-yaml
+        args: [--autofix, --indent, '2', --offset, '2']
+        exclude: '{{ cookiecutter.project_slug }}/.+'
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: "0.29.1"
+    rev: 0.29.1
     hooks:
       - id: check-github-workflows
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v4.0.0-alpha.8
-    hooks:
-      - id: prettier
-        # Prettier supports many other file formats (e.g., JavaScript, HTML; see
-        # https://prettier.io for list). Add other types here.
-        types_or: [yaml, json]
-        exclude: "{{ cookiecutter.project_slug }}/.+"
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.41.0
     hooks:
       - id: markdownlint-fix
-        exclude: "{{ cookiecutter.project_slug }}"
+        exclude: '{{ cookiecutter.project_slug }}'
   - repo: https://github.com/codespell-project/codespell
     rev: v2.3.0
     hooks:

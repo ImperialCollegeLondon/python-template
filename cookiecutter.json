@@ -4,7 +4,10 @@
     "project_description": "[Description for project.]",
     "author": "Jane Doe",
     "author_email": "jane_doe@imperial.ac.uk",
-    "packaging": ["poetry", "pip-tools"],
+    "packaging": [
+        "poetry",
+        "pip-tools"
+    ],
     "use_bsd3_licence": false,
     "add_precommit_workflows": true,
     "automerge_bot_prs": false,
