@@ -27,6 +27,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ "{{" }}matrix.python-version{{ "}}" }}
+          cache: {% if cookiecutter.packaging == "poetry" %}poetry{% else %}pip{% endif %}
 
 {%- if cookiecutter.packaging == "poetry" %}
       - name: Install Poetry
