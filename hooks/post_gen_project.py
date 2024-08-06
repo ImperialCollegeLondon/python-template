@@ -10,6 +10,7 @@ REMOVE_PATHS = (
     "{% if cookiecutter.packaging != 'pip-tools' %}dev-requirements.txt{% endif %}",
     "{% if cookiecutter.packaging != 'pip-tools' or not cookiecutter.mkdocs %}doc-requirements.txt{% endif %}",
     "{% if not cookiecutter.mkdocs %}docs{% endif %}",
+    "{% if not cookiecutter.mkdocs %}.github/workflows/docs.yml{% endif %}",
     "README.*.jinja",
 )
 
