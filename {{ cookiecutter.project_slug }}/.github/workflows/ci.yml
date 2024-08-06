@@ -18,7 +18,8 @@ jobs:
           - windows-latest
 {%- endif %}
 {%- if cookiecutter.use_macos_ci_runner %}
-          - macos-latest{% endif %}
+          - macos-latest
+{%- endif %}
         python-version: ['3.12']
 
     steps:
@@ -40,10 +41,25 @@ jobs:
 
       - name: Run tests
         run: poetry run pytest
+{%- if cookiecutter.mkdocs %}
+
+      - name: Check that documentation builds cleanly with MkDocs
+        if: matrix.os == 'ubuntu-latest'
+        run: poetry run mkdocs build --strict
+{%- endif %}
 {%- elif cookiecutter.packaging == "pip-tools" %}
       - name: Install dependencies
         run: pip install -r dev-requirements.txt
 
       - name: Run tests
         run: pytest
+{%- if cookiecutter.mkdocs %}
+
+      - name: Install doc dependencies
+        run: pip install -r doc-requirements.txt
+
+      - name: Check that documentation builds cleanly with MkDocs
+        if: matrix.os == 'ubuntu-latest'
+        run: mkdocs build --strict
+{%- endif %}
 {%- endif %}
