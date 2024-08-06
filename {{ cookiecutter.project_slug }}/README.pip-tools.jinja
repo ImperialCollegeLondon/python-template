@@ -4,41 +4,34 @@ This is a Python application that uses [`pip-tools`] for packaging and dependenc
 
 ## Usage
 
-To use this repository as a template for your own application:
+To get started:
 
-1. Click the green "Use this template" button above
-2. Name and create your repository
-3. Clone your new repository and make it your working directory
-4. Replace instances of `myproject` with your own application name. Edit:
-   - `pyproject.toml` (also change the list of authors here)
-   - `tests/test_myproject.py`
-   - Rename `myproject` directory
-5. Create and activate a Virtual Environment:
+1. Create and activate a [virtual environment](https://docs.python.org/3/library/venv.html):
 
    ```bash
    python -m venv .venv
    source .venv/bin/activate # with Powershell on Windows: `.venv\Scripts\Activate.ps1`
    ```
 
-6. Install development requirements:
+2. Install development requirements:
 
    ```bash
    pip install -r dev-requirements.txt
    ```
 
-7. Install the git hooks:
+3. Install the git hooks:
 
    ```bash
    pre-commit install
    ```
 
-8. Run the main app:
+4. Run the main app:
 
    ```bash
-   python -m myproject
+   python -m {{ cookiecutter.project_slug }}
    ```
 
-9. Run the tests:
+5. Run the tests:
 
    ```bash
    pytest
@@ -71,7 +64,5 @@ for this are:
   - The `mypy` and `pytest` configurations.
 - The `.pre-commit-config.yaml` for pre-commit settings.
 - The `.github` directory for all the CI configuration.
-  - This repo uses `pre-commit.ci` to update pre-commit package versions and automatically merges those PRs with the `auto-merge.yml` workflow.
-  - Note that `pre-commit.ci` is an external service and free for open source repos. For private repos uncomment the commented portion of the `pre-commit_autoupdate.yml` workflow.
 
 [`pip-tools`]: https://pip-tools.readthedocs.io/en/latest/
