@@ -4,11 +4,12 @@
     "project_description": "[Description for project.]",
     "author": "Jane Doe",
     "author_email": "jane_doe@imperial.ac.uk",
+    "use_bsd3_licence": false,
     "packaging": [
         "poetry",
         "pip-tools"
     ],
-    "use_bsd3_licence": false,
+    "mkdocs": false,
     "add_precommit_workflows": true,
     "automerge_bot_prs": false,
     "use_windows_ci_runner": false,
@@ -20,6 +21,7 @@
         "author": "Enter your full name",
         "author_email": "Enter your email address",
         "packaging": "Select the Python packaging tool you wish to use",
+        "mkdocs": "Whether to provide a skeleton for documentation, using MkDocs and publishing on GitHub Pages",
         "use_bsd3_licence": "Whether to use Imperial's default open-source licence (BSD 3-clause)",
         "add_precommit_workflows": "Add Github Actions to run pre-commit hooks (only needed for private repositories)",
         "use_windows_ci_runner": "Add a GitHub Actions runner for Windows (needed if your software targets Windows)",
