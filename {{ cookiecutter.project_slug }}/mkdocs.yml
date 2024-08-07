@@ -31,7 +31,6 @@ plugins:
             show_root_heading: true
             show_category_heading: true
             merge_init_into_class: true
-          paths: [{{ cookiecutter.project_slug }}]
 
 nav:
   - {{ cookiecutter.project_name }} documentation: index.md
