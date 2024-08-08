@@ -14,11 +14,17 @@ REMOVE_PATHS = (
     "README.*.jinja",
 )
 
-for path in REMOVE_PATHS:
-    path = path.strip()
-    if path:
-        for inode in glob(path):
-            if os.path.isfile(inode):
-                os.unlink(inode)
-            else:
-                rmtree(path)
+
+def main():
+    for path in REMOVE_PATHS:
+        path = path.strip()
+        if path:
+            for inode in glob(path):
+                if os.path.isfile(inode):
+                    os.unlink(inode)
+                else:
+                    rmtree(path)
+
+
+if __name__ == "__main__":
+    main()
