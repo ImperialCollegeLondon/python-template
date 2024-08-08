@@ -50,7 +50,7 @@ jobs:
           python-version: '3.12'
           cache: pip
       - name: Install dependencies
-        run: pip install .[doc]
+        run: pip install -r doc-requirements.txt
       - name: Build docs with MkDocs
         run: mkdocs build --strict
 {%- endif %}
