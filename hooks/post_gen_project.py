@@ -1,6 +1,7 @@
 import os
 from glob import glob
 from shutil import rmtree
+import re
 
 REMOVE_PATHS = (
     "{% if not cookiecutter.use_bsd3_licence %}LICENSE{% endif %}",
@@ -16,6 +17,47 @@ REMOVE_PATHS = (
 
 
 def main():
+    # {% if cookiecutter.packaging == 'poetry' %}
+    update_poetry_dependencies()
+    # {% endif %}
+    remove_unneeded_files()
+
+
+def read_package_versions() -> dict[str, str]:
+    """Read package versions from *requirements.txt."""
+    regex = re.compile("^([^# ]+)==(.+)$")
+    packages: dict[str, str] = {}
+    for filename in (
+        "doc-requirements.txt",
+        "dev-requirements.txt",
+        "requirements.txt",
+    ):
+        with open(filename) as f:
+            for line in f.readlines():
+                if match := regex.match(line):
+                    name = match.group(1).lower()
+                    version = match.group(2)
+                    packages[name] = version
+    return packages
+
+
+def update_poetry_dependencies():
+    """Patch the versions of packages in pyproject.toml."""
+    packages = read_package_versions()
+    output = ""
+    regex = re.compile('^([^ ]+) = "VERSION"$')
+    with open("pyproject.toml") as f:
+        for line in f.readlines():
+            if match := regex.match(line):
+                name = match.group(1)
+                output += f'{name} = "^{packages[name.lower()]}"\n'
+            else:
+                output += line
+    with open("pyproject.toml", "w") as f:
+        f.write(output)
+
+
+def remove_unneeded_files():
     for path in REMOVE_PATHS:
         path = path.strip()
         if path:

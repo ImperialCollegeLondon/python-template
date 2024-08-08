@@ -12,21 +12,21 @@ authors = [
 python = "^3.12"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.2"
-pytest-cov = "^5.0.0"
-pytest-mypy = "^0.10.0"
-pytest-mock = "^3.7.0"
-pre-commit = "^3.0.4"
-ruff = "^0.4.4"
+pytest = "VERSION"
+pytest-cov = "VERSION"
+pytest-mypy = "VERSION"
+pytest-mock = "VERSION"
+pre-commit = "VERSION"
+ruff = "VERSION"
 {% if cookiecutter.mkdocs %}
 [tool.poetry.group.docs.dependencies]
-mkdocs = "^1.6.0"
-mkdocstrings = "^0.25.1"
-mkdocstrings-python = "^1.10.0"
-mkdocs-material = "^9.5.25"
-mkdocs-gen-files = "^0.5.0"
-mkdocs-literate-nav = "^0.6.1"
-mkdocs-section-index = "^0.3.9"
+mkdocs = "VERSION"
+mkdocstrings = "VERSION"
+mkdocstrings-python = "VERSION"
+mkdocs-material = "VERSION"
+mkdocs-gen-files = "VERSION"
+mkdocs-literate-nav = "VERSION"
+mkdocs-section-index = "VERSION"
 {% endif %}
 [build-system]
 requires = ["poetry-core>=1.0.0"]
