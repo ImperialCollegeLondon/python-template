@@ -4,7 +4,7 @@
 #
 #    pip-compile --extra=dev --output-file=dev-requirements.txt pyproject.toml
 #
-attrs==23.2.0
+attrs==24.2.0
     # via pytest-mypy
 build==1.2.1
     # via pip-tools
