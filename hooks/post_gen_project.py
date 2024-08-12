@@ -1,22 +1,24 @@
 import os
 from glob import glob
-from itertools import chain
+from shutil import rmtree
 
-REMOVE_PATHS = chain(
-    (
-        "{% if not cookiecutter.use_bsd3_licence %}LICENSE{% endif %}",
-        "{% if not cookiecutter.add_precommit_workflows %}.github/workflows/pre-commit*.yml{% endif %}",
-        "{% if not cookiecutter.automerge_bot_prs %}.github/workflows/auto-merge.yml{% endif %}",
-        "{% if cookiecutter.packaging != 'pip-tools' %}*requirements.txt{% endif %}",
-    ),
-    glob("README.*.jinja"),
+REMOVE_PATHS = (
+    "{% if not cookiecutter.use_bsd3_licence %}LICENSE{% endif %}",
+    "{% if not cookiecutter.add_precommit_workflows %}.github/workflows/pre-commit*.yml{% endif %}",
+    "{% if not cookiecutter.automerge_bot_prs %}.github/workflows/auto-merge.yml{% endif %}",
+    "{% if cookiecutter.packaging != 'pip-tools' %}requirements.txt{% endif %}",
+    "{% if cookiecutter.packaging != 'pip-tools' %}dev-requirements.txt{% endif %}",
+    "{% if cookiecutter.packaging != 'pip-tools' or not cookiecutter.mkdocs %}doc-requirements.txt{% endif %}",
+    "{% if not cookiecutter.mkdocs %}docs{% endif %}",
+    "{% if not cookiecutter.mkdocs %}.github/workflows/docs.yml{% endif %}",
+    "README.*.jinja",
 )
 
 for path in REMOVE_PATHS:
     path = path.strip()
     if path:
-        for file in glob(path):
-            if os.path.isfile(file):
-                os.unlink(file)
+        for inode in glob(path):
+            if os.path.isfile(inode):
+                os.unlink(inode)
             else:
-                os.rmdir(file)
+                rmtree(path)
