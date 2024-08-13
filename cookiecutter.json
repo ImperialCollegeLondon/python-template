@@ -4,6 +4,7 @@
     "project_description": "[Description for project.]",
     "author": "Jane Doe",
     "author_email": "jane_doe@imperial.ac.uk",
+    "rse_team_as_coauthor": false,
     "use_bsd3_licence": false,
     "packaging": [
         "poetry",
@@ -20,6 +21,7 @@
         "project_description": "Enter a brief description of the project",
         "author": "Enter your full name",
         "author_email": "Enter your email address",
+        "rse_team_as_coauthor": "Whether to add the RSE team as a co-author (say no if you aren't part of the RSE team!)",
         "packaging": "Select the Python packaging tool you wish to use",
         "mkdocs": "Whether to provide a skeleton for documentation, using MkDocs and publishing on GitHub Pages",
         "use_bsd3_licence": "Whether to use Imperial's default open-source licence (BSD 3-clause)",
