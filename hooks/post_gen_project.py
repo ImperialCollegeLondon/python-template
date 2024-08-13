@@ -23,15 +23,11 @@ def main():
     remove_unneeded_files()
 
 
-def read_package_versions() -> dict[str, str]:
+def read_package_versions(*filenames: str) -> dict[str, str]:
     """Read package versions from *requirements.txt."""
     regex = re.compile("^([^# ]+)==(.+)$")
     packages: dict[str, str] = {}
-    for filename in (
-        "doc-requirements.txt",
-        "dev-requirements.txt",
-        "requirements.txt",
-    ):
+    for filename in filenames:
         with open(filename) as f:
             for line in f.readlines():
                 if match := regex.match(line):
@@ -41,19 +37,22 @@ def read_package_versions() -> dict[str, str]:
     return packages
 
 
-def update_poetry_dependencies():
+def update_poetry_dependencies(pyproject_path: str = "pyproject.toml"):
     """Patch the versions of packages in pyproject.toml."""
-    packages = read_package_versions()
+    packages = read_package_versions(
+        "doc-requirements.txt", "dev-requirements.txt", "requirements.txt"
+    )
+
     output = ""
     regex = re.compile('^([^ ]+) = "VERSION"$')
-    with open("pyproject.toml") as f:
+    with open(pyproject_path) as f:
         for line in f.readlines():
             if match := regex.match(line):
                 name = match.group(1)
                 output += f'{name} = "^{packages[name.lower()]}"\n'
             else:
                 output += line
-    with open("pyproject.toml", "w") as f:
+    with open(pyproject_path, "w") as f:
         f.write(output)
 
 

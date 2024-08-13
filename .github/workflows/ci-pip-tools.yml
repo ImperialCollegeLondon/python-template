@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r dev-requirements.txt
 
+      - name: Run unit tests
+        run: pytest
+
       - name: Create project from template
         # Choose default options
         run: cookiecutter . --no-input packaging=pip-tools
