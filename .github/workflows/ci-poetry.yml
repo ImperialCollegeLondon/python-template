@@ -27,8 +27,8 @@ jobs:
         with:
           poetry-version: 1.2.2
 
-      - name: Install cookiecutter
-        run: pip install cookiecutter
+      - name: Install dependencies
+        run: pip install -r dev-requirements.txt
 
       - name: Create project from template
         # Choose default options

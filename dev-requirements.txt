@@ -1,0 +1,2 @@
+# This file contains dependencies for development and CI workflows
+cookiecutter==2.6.0

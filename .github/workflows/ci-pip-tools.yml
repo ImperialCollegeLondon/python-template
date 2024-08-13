@@ -22,8 +22,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install cookiecutter
-        run: pip install cookiecutter
+      - name: Install dependencies
+        run: pip install -r dev-requirements.txt
 
       - name: Create project from template
         # Choose default options
