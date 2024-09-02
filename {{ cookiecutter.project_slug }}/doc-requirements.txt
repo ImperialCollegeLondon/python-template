@@ -73,7 +73,7 @@ mkdocstrings==0.25.2
     # via
     #   mkdocstrings-python
     #   my_project (pyproject.toml)
-mkdocstrings-python==1.10.8
+mkdocstrings-python==1.10.9
     # via my_project (pyproject.toml)
 packaging==24.1
     # via mkdocs
