@@ -109,5 +109,5 @@ six==1.16.0
     # via python-dateutil
 urllib3==2.2.2
     # via requests
-watchdog==4.0.2
+watchdog==5.0.0
     # via mkdocs
