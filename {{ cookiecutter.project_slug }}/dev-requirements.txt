@@ -6,7 +6,7 @@
 #
 attrs==24.2.0
     # via pytest-mypy
-build==1.2.1
+build==1.2.2
     # via pip-tools
 cfgv==3.4.0
     # via pre-commit
