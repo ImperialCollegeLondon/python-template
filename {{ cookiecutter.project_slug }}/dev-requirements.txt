@@ -38,7 +38,7 @@ packaging==24.1
     #   pytest
 pip-tools==7.4.1
     # via datahub (pyproject.toml)
-platformdirs==4.2.2
+platformdirs==4.3.6
     # via virtualenv
 pluggy==1.5.0
     # via pytest
