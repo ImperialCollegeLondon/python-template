@@ -14,11 +14,11 @@ repos:
         args: [--autofix, --indent, '2', --offset, '2']
         exclude: '{{ cookiecutter.project_slug }}/.+'
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.2
+    rev: 0.29.3
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.41.0
+    rev: v0.42.0
     hooks:
       - id: markdownlint-fix
         exclude: '{{ cookiecutter.project_slug }}'
