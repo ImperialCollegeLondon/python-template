@@ -63,7 +63,7 @@ mkdocs-get-deps==0.2.0
     # via mkdocs
 mkdocs-literate-nav==0.6.1
     # via my_project (pyproject.toml)
-mkdocs-material==9.5.34
+mkdocs-material==9.5.40
     # via my_project (pyproject.toml)
 mkdocs-material-extensions==1.3.1
     # via mkdocs-material
