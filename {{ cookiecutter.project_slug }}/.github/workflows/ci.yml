@@ -25,17 +25,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+{%- if cookiecutter.packaging == "poetry" %}
+      - name: Install poetry
+        run: pipx install poetry
+{%- endif %}
+
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ "{{" }}matrix.python-version{{ "}}" }}
           cache: {% if cookiecutter.packaging == "poetry" %}poetry{% else %}pip{% endif %}
 
 {%- if cookiecutter.packaging == "poetry" %}
-      - name: Install Poetry
-        uses: abatilo/actions-poetry@v3.0.0
-        with:
-          poetry-version: 1.8.3
-
       - name: Install dependencies
         run: poetry install
 
