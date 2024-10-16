@@ -37,6 +37,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r dev-requirements.txt
+          pip install -e .
 
       - name: Run mypy
         working-directory: my_project
