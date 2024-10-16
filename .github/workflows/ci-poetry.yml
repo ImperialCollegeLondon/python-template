@@ -41,6 +41,10 @@ jobs:
         working-directory: my_project
         run: poetry install
 
+      - name: Run mypy
+        working-directory: my_project
+        run: poetry run mypy .
+
       - name: Run tests
         working-directory: my_project
         run: poetry run pytest

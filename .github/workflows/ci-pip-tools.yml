@@ -36,6 +36,10 @@ jobs:
         working-directory: my_project
         run: pip install .[dev]
 
+      - name: Run mypy
+        working-directory: my_project
+        run: mypy .
+
       - name: Run tests
         working-directory: my_project
         run: pytest
