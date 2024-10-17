@@ -54,27 +54,27 @@ mkdocs==1.6.1
     #   mkdocs-material
     #   mkdocs-section-index
     #   mkdocstrings
-    #   my_project (pyproject.toml)
+    #   {{ cookiecutter.project_slug }} (pyproject.toml)
 mkdocs-autorefs==1.2.0
     # via mkdocstrings
 mkdocs-gen-files==0.5.0
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mkdocs-get-deps==0.2.0
     # via mkdocs
 mkdocs-literate-nav==0.6.1
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mkdocs-material==9.5.40
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mkdocs-material-extensions==1.3.1
     # via mkdocs-material
 mkdocs-section-index==0.3.9
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mkdocstrings==0.26.1
     # via
     #   mkdocstrings-python
-    #   my_project (pyproject.toml)
+    #   {{ cookiecutter.project_slug }} (pyproject.toml)
 mkdocstrings-python==1.11.1
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 packaging==24.1
     # via mkdocs
 paginate==0.5.7

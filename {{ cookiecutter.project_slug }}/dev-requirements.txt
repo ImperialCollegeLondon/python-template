@@ -21,7 +21,7 @@ identify==2.6.1
 iniconfig==2.0.0
     # via pytest
 mypy==1.11.2
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mypy-extensions==1.0.0
     # via mypy
 nodeenv==1.9.1
@@ -31,30 +31,30 @@ packaging==24.1
     #   build
     #   pytest
 pip-tools==7.4.1
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 platformdirs==4.3.6
     # via virtualenv
 pluggy==1.5.0
     # via pytest
 pre-commit==4.0.0
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
 pytest==8.3.3
     # via
-    #   my_project (pyproject.toml)
+    #   {{ cookiecutter.project_slug }} (pyproject.toml)
     #   pytest-cov
     #   pytest-mock
 pytest-cov==5.0.0
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 pytest-mock==3.14.0
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 pyyaml==6.0.2
     # via pre-commit
 ruff==0.6.8
-    # via my_project (pyproject.toml)
+    # via {{ cookiecutter.project_slug }} (pyproject.toml)
 typing-extensions==4.12.2
     # via mypy
 virtualenv==20.26.6
