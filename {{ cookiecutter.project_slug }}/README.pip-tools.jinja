@@ -13,10 +13,11 @@ To get started:
    source .venv/bin/activate # with Powershell on Windows: `.venv\Scripts\Activate.ps1`
    ```
 
-1. Install development requirements:
+1. Install development requirements and the package in editable mode:
 
    ```bash
    pip install -r dev-requirements.txt
+   pip install -e .
    ```
 {% if cookiecutter.mkdocs %}
 1. (Optionally) install tools for building documentation:

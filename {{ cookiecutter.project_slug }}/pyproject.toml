@@ -14,9 +14,9 @@ authors = [
 python = "^3.12"
 
 [tool.poetry.group.dev.dependencies]
+mypy = "VERSION"
 pytest = "VERSION"
 pytest-cov = "VERSION"
-pytest-mypy = "VERSION"
 pytest-mock = "VERSION"
 pre-commit = "VERSION"
 ruff = "VERSION"
@@ -55,7 +55,6 @@ dev = [
     "pre-commit",
     "pytest",
     "pytest-cov",
-    "pytest-mypy",
     "pytest-mock",
 ]
 {% if cookiecutter.mkdocs %}doc = [
@@ -89,7 +88,7 @@ module = "tests.*"
 disallow_untyped_defs = false
 
 [tool.pytest.ini_options]
-addopts = "-v --mypy -p no:warnings --cov={{ cookiecutter.project_slug }} --cov-report=html --doctest-modules --ignore={{ cookiecutter.project_slug }}/__main__.py"
+addopts = "-v -p no:warnings --cov={{ cookiecutter.project_slug }} --cov-report=html --doctest-modules --ignore={{ cookiecutter.project_slug }}/__main__.py"
 
 [tool.ruff]
 target-version = "py312"
