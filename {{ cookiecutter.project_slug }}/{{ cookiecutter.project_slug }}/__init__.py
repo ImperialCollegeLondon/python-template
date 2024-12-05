@@ -1,5 +1,8 @@
 """The main module for {{ cookiecutter.project_name }}."""
 
-from importlib.metadata import version
+from importlib.metadata import PackageNotFoundError, version
 
-__version__ = version(__name__)
+try:
+    __version__ = version("MUSE_OS")
+except PackageNotFoundError:
+    pass
