@@ -71,7 +71,7 @@ development tools separate from the project requirements).
    - `pip-compile --extra dev -o dev-requirements.txt` for the development requirements.
 {% if cookiecutter.mkdocs %}   - `pip-compile --extra doc -o doc-requirements.txt` for
 the documentation tools.
-{% endif %}3. Sync the files with your installation (install packages):
+{% endif %}1. Sync the files with your installation (install packages):
    - `pip-sync *requirements.txt`
 
 To upgrade pinned versions, use the `--upgrade` flag with `pip-compile`.
