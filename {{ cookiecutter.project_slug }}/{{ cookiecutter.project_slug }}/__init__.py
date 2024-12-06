@@ -1,8 +1,7 @@
 """The main module for {{ cookiecutter.project_name }}."""
 
+from contextlib import suppress
 from importlib.metadata import PackageNotFoundError, version
 
-try:
-    __version__ = version("MUSE_OS")
-except PackageNotFoundError:
-    pass
+with suppress(PackageNotFoundError):
+    __version__ = version(__name__)
