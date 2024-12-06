@@ -29,7 +29,7 @@ To get started:
    source .venv/bin/activate # with Powershell on Windows: `.venv\Scripts\Activate.ps1`
    ```
 
-2. Install development requirements and the package in editable mode:
+1. Install development requirements and the package in editable mode:
 
    ```bash
    pip install -r dev-requirements.txt
@@ -48,13 +48,13 @@ To get started:
    pre-commit install
    ```
 
-2. Run the main app:
+1. Run the main app:
 
    ```bash
    python -m {{ cookiecutter.project_slug }}
    ```
 
-3. Run the tests:
+1. Run the tests:
 
    ```bash
    pytest
@@ -66,7 +66,7 @@ To add or remove dependencies:
 
 1. Edit the `dependencies` variables in the `pyproject.toml` file (aim to keep
 development tools separate from the project requirements).
-2. Update the requirements files:
+1. Update the requirements files:
    - `pip-compile` for `requirements.txt` - the project requirements.
    - `pip-compile --extra dev -o dev-requirements.txt` for the development requirements.
 {% if cookiecutter.mkdocs %}   - `pip-compile --extra doc -o doc-requirements.txt` for
