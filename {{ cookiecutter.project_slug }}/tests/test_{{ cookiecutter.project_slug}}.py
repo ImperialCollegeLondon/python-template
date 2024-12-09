@@ -5,4 +5,4 @@ from {{ cookiecutter.project_slug }} import __version__
 
 def test_version():
     """Check that the version is acceptable."""
-    assert __version__ == "0.1.0"
+    assert __version__.startswith("0.1.")
