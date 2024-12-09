@@ -105,7 +105,7 @@ regex==2024.11.6
     # via mkdocs-material
 requests==2.32.3
     # via mkdocs-material
-six==1.16.0
+six==1.17.0
     # via python-dateutil
 urllib3==2.2.3
     # via requests
