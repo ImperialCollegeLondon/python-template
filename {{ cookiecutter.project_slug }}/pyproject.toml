@@ -36,7 +36,7 @@ build-backend = "poetry.core.masonry.api"
 {%- elif cookiecutter.packaging == "pip-tools" -%}
 [project]
 name = "{{ cookiecutter.project_slug }}"
-version = "0.1.0"
+dynamic = ["version"]
 description = "{{ cookiecutter.project_description }}"
 authors = [
     { name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}" }
@@ -73,6 +73,8 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 exclude = ["htmlcov"] # Exclude the coverage report file from setuptools package finder
+
+[tool.setuptools_scm]
 {%- endif %}
 
 [tool.mypy]
