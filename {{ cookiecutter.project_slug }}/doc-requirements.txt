@@ -87,7 +87,7 @@ platformdirs==4.3.6
     #   mkdocstrings
 pygments==2.19.0
     # via mkdocs-material
-pymdown-extensions==10.13
+pymdown-extensions==10.14
     # via
     #   mkdocs-material
     #   mkdocstrings
