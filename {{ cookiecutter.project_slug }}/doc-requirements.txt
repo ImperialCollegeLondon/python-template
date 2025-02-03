@@ -4,7 +4,7 @@
 #
 #    pip-compile --extra=doc --output-file=doc-requirements.txt pyproject.toml
 #
-babel==2.16.0
+babel==2.17.0
     # via mkdocs-material
 certifi==2024.12.14
     # via requests
