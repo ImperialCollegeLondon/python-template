@@ -34,3 +34,17 @@ To use this template for your own application:
 
 [Install `cookiecutter`]:
     https://cookiecutter.readthedocs.io/en/stable/README.html#installation
+
+# Extra setup
+
+## Auto-merging bot PRs
+
+This template optionally includes a [GitHub Actions] workflow to automatically merge PRs
+from bots (specifically for [dependabot] and [pre-commit.ci]). However, in order for
+this to work, you will first need to [follow GitHub's instructions] for enabling
+auto-merge on your repository.
+
+[GitHub Actions]: https://github.com/features/actions
+[dependabot]: https://github.com/dependabot
+[pre-commit.ci]: https://pre-commit.ci
+[follow GitHub's instructions]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request#enabling-auto-merge
