@@ -54,7 +54,7 @@ authors = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 package_a = "{package_a}"
 
 [tool.poetry.group.dev.dependencies]
