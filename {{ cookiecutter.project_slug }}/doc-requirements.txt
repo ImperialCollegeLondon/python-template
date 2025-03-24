@@ -61,7 +61,7 @@ mkdocs-gen-files==0.5.0
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mkdocs-get-deps==0.2.0
     # via mkdocs
-mkdocs-literate-nav==0.6.1
+mkdocs-literate-nav==0.6.2
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mkdocs-material==9.6.8
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
