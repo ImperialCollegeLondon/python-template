@@ -38,7 +38,7 @@ jobs:
           poetry-version: 1.8.3
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
           cache: poetry
       - name: Install dependencies
         run: poetry install
@@ -47,7 +47,7 @@ jobs:
 {%- elif cookiecutter.packaging == 'pip-tools' %}
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
           cache: pip
       - name: Install dependencies
         run: pip install -r doc-requirements.txt
