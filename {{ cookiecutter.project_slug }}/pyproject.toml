@@ -11,7 +11,7 @@ authors = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "VERSION"
@@ -44,7 +44,7 @@ authors = [
     { name = "Imperial College London RSE Team", email = "ict-rse-team@imperial.ac.uk" }
 {%- endif %}
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = []
 
 [project.optional-dependencies]
