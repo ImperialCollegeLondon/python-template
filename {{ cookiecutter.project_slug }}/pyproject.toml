@@ -1,14 +1,44 @@
-{%- if cookiecutter.packaging == "poetry" -%}
-[tool.poetry]
+[project]
 name = "{{ cookiecutter.project_slug }}"
+{%- if cookiecutter.packaging == "poetry" %}
 version = "0.1.0"
+{%- else %}
+dynamic = ["version"]
+{%- endif %}
 description = "{{ cookiecutter.project_description }}"
 authors = [
-    "{{ cookiecutter.author }} <{{ cookiecutter.author_email }}>"
+    { name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}" }
 {%- if cookiecutter.rse_team_as_coauthor %},
-    "Imperial College London RSE Team <ict-rse-team@imperial.ac.uk>"
+    { name = "Imperial College London RSE Team", email = "ict-rse-team@imperial.ac.uk" }
 {%- endif %}
 ]
+{%- if cookiecutter.packaging == "pip-tools" %}
+requires-python = ">=3.13"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "mypy",
+    "pip-tools",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+]
+{% if cookiecutter.mkdocs -%}
+doc = [
+    "mkdocs",
+    "mkdocstrings",
+    "mkdocstrings-python",
+    "mkdocs-material",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-section-index",
+]
+{%- endif %}
+{%- endif %}
+{%- if cookiecutter.packaging == "poetry" %}
 
 [tool.poetry.dependencies]
 python = "^3.13"
@@ -29,52 +59,7 @@ mkdocs-material = "VERSION"
 mkdocs-gen-files = "VERSION"
 mkdocs-literate-nav = "VERSION"
 mkdocs-section-index = "VERSION"
-{% endif %}
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-{%- elif cookiecutter.packaging == "pip-tools" -%}
-[project]
-name = "{{ cookiecutter.project_slug }}"
-dynamic = ["version"]
-description = "{{ cookiecutter.project_description }}"
-authors = [
-    { name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}" }
-{%- if cookiecutter.rse_team_as_coauthor %},
-    { name = "Imperial College London RSE Team", email = "ict-rse-team@imperial.ac.uk" }
-{%- endif %}
-]
-requires-python = ">=3.13"
-dependencies = []
-
-[project.optional-dependencies]
-dev = [
-    "ruff",
-    "mypy",
-    "pip-tools",
-    "pre-commit",
-    "pytest",
-    "pytest-cov",
-    "pytest-mock",
-]
-{% if cookiecutter.mkdocs %}doc = [
-    "mkdocs",
-    "mkdocstrings",
-    "mkdocstrings-python",
-    "mkdocs-material",
-    "mkdocs-gen-files",
-    "mkdocs-literate-nav",
-    "mkdocs-section-index",
-]
-{% endif %}
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools.packages.find]
-exclude = ["htmlcov"] # Exclude the coverage report file from setuptools package finder
-
-[tool.setuptools_scm]
+{%- endif -%}
 {%- endif %}
 
 [tool.mypy]
@@ -107,4 +92,20 @@ select = [
 pydocstyle.convention = "google"
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["D100", "D104"] # Missing docstring in public module, Missing docstring in public package
+"tests/*" = [
+    "D100",  # Missing docstring in public module
+    "D104"   # Missing docstring in public package
+]
+
+{% if cookiecutter.packaging == "pip-tools" -%}
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+exclude = ["htmlcov"] # Exclude the coverage report file from setuptools package finder
+{%- elif cookiecutter.packaging == "poetry" -%}
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+{%- endif %}
