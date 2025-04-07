@@ -47,7 +47,7 @@ pytest==8.3.5
     #   {{ cookiecutter.project_slug }} (pyproject.toml)
     #   pytest-cov
     #   pytest-mock
-pytest-cov==6.0.0
+pytest-cov==6.1.1
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 pytest-mock==3.14.0
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
