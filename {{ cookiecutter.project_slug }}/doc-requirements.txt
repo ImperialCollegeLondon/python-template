@@ -75,7 +75,7 @@ mkdocstrings==0.29.1
     #   {{ cookiecutter.project_slug }} (pyproject.toml)
 mkdocstrings-python==1.16.10
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
-packaging==24.2
+packaging==25.0
     # via mkdocs
 paginate==0.5.7
     # via mkdocs-material
