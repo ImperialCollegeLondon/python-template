@@ -7,9 +7,9 @@ dynamic = ["version"]
 {%- endif %}
 description = "{{ cookiecutter.project_description }}"
 authors = [
-    { name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}" }
+    {name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}"}
 {%- if cookiecutter.rse_team_as_coauthor %},
-    { name = "Imperial College London RSE Team", email = "ict-rse-team@imperial.ac.uk" }
+    {name = "Imperial College London RSE Team", email = "ict-rse-team@imperial.ac.uk"},
 {%- endif %}
 ]
 {%- if cookiecutter.packaging == "pip-tools" %}
@@ -17,15 +17,7 @@ requires-python = ">=3.13"
 dependencies = []
 
 [project.optional-dependencies]
-dev = [
-    "ruff",
-    "mypy",
-    "pip-tools",
-    "pre-commit",
-    "pytest",
-    "pytest-cov",
-    "pytest-mock",
-]
+dev = ["ruff", "mypy", "pip-tools", "pre-commit", "pytest", "pytest-cov", "pytest-mock"]
 {% if cookiecutter.mkdocs -%}
 doc = [
     "mkdocs",
@@ -87,14 +79,14 @@ select = [
     "F",   # Pyflakes
     "I",   # isort
     "UP",  # pyupgrade
-    "RUF"  # ruff
+    "RUF", # ruff
 ]
 pydocstyle.convention = "google"
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = [
-    "D100",  # Missing docstring in public module
-    "D104"   # Missing docstring in public package
+    "D100", # Missing docstring in public module
+    "D104", # Missing docstring in public package
 ]
 
 {% if cookiecutter.packaging == "pip-tools" -%}
