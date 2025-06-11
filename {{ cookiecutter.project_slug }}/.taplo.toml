@@ -1,0 +1,4 @@
+[formatting]
+compact_inline_tables = true
+column_width = 88
+indent_string = "    "
