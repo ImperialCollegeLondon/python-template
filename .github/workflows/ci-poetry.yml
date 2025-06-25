@@ -54,3 +54,7 @@ jobs:
           git init
           git add .
           poetry run pre-commit run -a
+
+      - name: Test build is successful
+        working-directory: my_project
+        run: poetry build

@@ -54,3 +54,9 @@ jobs:
         run: |
           git add .
           pre-commit run -a
+
+      - name: Test build is successful
+        working-directory: my_project
+        run: |
+          pip install --upgrade build
+          python -m build
