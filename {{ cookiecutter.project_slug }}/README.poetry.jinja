@@ -1,37 +1,46 @@
-This is a Python application that uses [poetry](https://python-poetry.org) for packaging
-and dependency management. It also provides [pre-commit](https://pre-commit.com/) hooks
-(for [ruff](https://pypi.org/project/ruff/) and
-[mypy](https://mypy.readthedocs.io/en/stable/)) and automated tests using
-[pytest](https://pytest.org/) and [GitHub Actions](https://github.com/features/actions).
+This is a Python application that uses [Poetry] for packaging and dependency management.
+It  provides [`pre-commit`][pre-commit] hooks for various linters
+and formatters and automated tests using [`pytest`][pytest] and [GitHub Actions].
+Pre-commit hooks are automatically kept updated with a dedicated GitHub Action, this can
+be removed and replaced with [pre-commit.ci] if using a public repo.
 
-## For developers
+It was developed by the [Imperial College Research Software Engineering Team].
 
-This is a Python application that uses [poetry](https://python-poetry.org) for packaging
-and dependency management. It also provides [pre-commit](https://pre-commit.com/) hooks
-for various linters and formatters and automated tests using
-[pytest](https://pytest.org/) and [GitHub Actions](https://github.com/features/actions).
-Pre-commit hooks are automatically kept updated with a dedicated GitHub Action.
+## Usage
 
 To get started:
 
-1. [Download and install Poetry](https://python-poetry.org/docs/#installation) following the instructions for your OS.
-1. Clone this repository and make it your working directory
+1. [Download and install Poetry] following the instructions for your OS.
+1. Activate a git repository (required for `pre-commit`):
+
+   ```bash
+   git init
+   ```
+
 1. Set up the virtual environment:
 
    ```bash
    poetry install
    ```
 
-1. Activate the virtual environment (alternatively, ensure any Python-related command is preceded by `poetry run`):
+1. Activate the virtual environment (see [Poetry docs][poetry activate] for more info):
 
    ```bash
-   poetry shell
+   eval $(poetry env activate) # bash/Zsh/Csh
+   eval (poetry env activate) # Fish
+   Invoke-Expression (poetry env activate) # Powershell
    ```
 
-1. Install the git hooks:
+1. Install the pre-commit git hooks:
 
    ```bash
    pre-commit install
+   ```
+
+1. Update the pre-commit hooks
+
+   ```bash
+   pre-commit autoupdate
    ```
 
 1. Run the main app:
@@ -39,3 +48,28 @@ To get started:
    ```bash
    python -m {{ cookiecutter.project_slug }}
    ```
+
+1. Run the tests:
+
+   ```bash
+   pytest
+   ```
+
+1. Create an initial commit (it's possible there might be some failures in pre-commit):
+
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   ```
+
+## Updating Dependencies
+
+See the [Poetry] docs for managing dependencies.
+
+[Poetry]: https://python-poetry.org
+[pre-commit]: https://pre-commit.com/
+[pytest]: https://pytest.org/
+[GitHub Actions]: https://github.com/features/actions
+[pre-commit.ci]: https://pre-commit.ci
+[Download and install Poetry]: https://python-poetry.org/docs/#installation
+[poetry activate]: https://python-poetry.org/docs/managing-environments/#activating-the-environment

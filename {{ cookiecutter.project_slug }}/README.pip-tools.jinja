@@ -1,9 +1,9 @@
 This is a Python application that uses [`pip-tools`][pip-tools] for packaging and
-dependency management. It also provides [`pre-commit`][pre-commit] hooks (for
-[`ruff`][ruff] and [`mypy`][mypy]) and automated tests using [`pytest`][pytest] and
-[GitHub Actions]. Pre-commit hooks are automatically kept updated with a dedicated
-GitHub Action, this can be removed and replaced with [pre-commit.ci] if using a public
-repo. The package version is dynamically generated from the most recent git tag using
+dependency management. It provides [`pre-commit`][pre-commit] hooks for various linters
+and formatters and automated tests using [`pytest`][pytest] and [GitHub Actions].
+Pre-commit hooks are automatically kept updated with a dedicated GitHub Action, this can
+be removed and replaced with [pre-commit.ci] if using a public repo. The package version
+is dynamically generated from the most recent git tag using
 [`setuptools-scm`][setuptools-scm].
 
 [`pip-tools`][pip-tools] is chosen as a lightweight dependency manager that adheres to
@@ -42,10 +42,16 @@ To get started:
    pip install -r doc-requirements.txt
    ```
 {% endif %}
-1. Install the git hooks:
+1. Install the pre-commit git hooks:
 
    ```bash
    pre-commit install
+   ```
+
+1. Update the pre-commit hooks
+
+   ```bash
+   pre-commit autoupdate
    ```
 
 1. Run the main app:
@@ -58,6 +64,13 @@ To get started:
 
    ```bash
    pytest
+   ```
+
+1. Create an initial commit (it's possible there might be some failures in pre-commit):
+
+   ```bash
+   git add .
+   git commit -m "Initial commit"
    ```
 
 ## Updating Dependencies
@@ -96,8 +109,6 @@ list under `[project.optional-dependencies]` (i.e. `doc = ["mkdocs"]`).
 
 [pip-tools]: https://pip-tools.readthedocs.io/en/stable/
 [pre-commit]: https://pre-commit.com/
-[ruff]: https://pypi.org/project/ruff/
-[mypy]: https://mypy.readthedocs.io/en/stable/
 [pytest]: https://pytest.org/
 [GitHub Actions]: https://github.com/features/actions
 [pre-commit.ci]: https://pre-commit.ci
