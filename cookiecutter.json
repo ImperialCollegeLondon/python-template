@@ -10,7 +10,7 @@
         "poetry",
         "pip-tools"
     ],
-    "mkdocs": false,
+    "mkdocs": true,
     "add_precommit_workflows": true,
     "automerge_bot_prs": false,
     "use_windows_ci_runner": false,
