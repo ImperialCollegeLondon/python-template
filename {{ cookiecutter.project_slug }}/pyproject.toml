@@ -70,7 +70,7 @@ disallow_untyped_defs = false
 addopts = "-v -p no:warnings --cov={{ cookiecutter.project_slug }} --cov-branch --cov-report=html --cov-report=xml --doctest-modules --ignore={{ cookiecutter.project_slug }}/__main__.py --ignore=docs/"
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py313"
 
 [tool.ruff.lint]
 select = [
@@ -94,8 +94,10 @@ pydocstyle.convention = "google"
 requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.packages.find]
-exclude = ["htmlcov"] # Exclude the coverage report file from setuptools package finder
+[tool.setuptools]
+packages = ["{{ cookiecutter.project_slug }}"]
+
+[tool.setuptools_scm]
 {%- elif cookiecutter.packaging == "poetry" -%}
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
