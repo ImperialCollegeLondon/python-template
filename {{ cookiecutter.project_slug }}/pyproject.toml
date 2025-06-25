@@ -13,6 +13,10 @@ authors = [
 {%- endif %}
 ]
 {%- if cookiecutter.packaging == "pip-tools" %}
+{%- if cookiecutter.use_bsd3_license %}
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+{%- endif %}
 requires-python = ">=3.13"
 dependencies = []
 
@@ -31,6 +35,9 @@ doc = [
 {%- endif %}
 {%- endif %}
 {%- if cookiecutter.packaging == "poetry" %}
+{%- if cookiecutter.use_bsd3_license %}
+license = {text = "BSD-3-Clause"}
+{%- endif %}
 
 [tool.poetry.dependencies]
 python = "^3.13"
@@ -91,7 +98,7 @@ pydocstyle.convention = "google"
 
 {% if cookiecutter.packaging == "pip-tools" -%}
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
+requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
