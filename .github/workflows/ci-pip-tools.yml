@@ -31,7 +31,7 @@ jobs:
 
       - name: Create project from template
         # Choose default options
-        run: cookiecutter . --no-input packaging=pip-tools rse_team_as_coauthor=true
+        run: cookiecutter . --no-input packaging=pip-tools rse_team_as_coauthor=true use_bsd3_license=true
 
       - name: Install project dependencies
         working-directory: my_project

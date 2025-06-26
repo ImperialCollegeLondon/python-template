@@ -5,7 +5,7 @@
     "author": "Jane Doe",
     "author_email": "jane_doe@imperial.ac.uk",
     "rse_team_as_coauthor": false,
-    "use_bsd3_license": true,
+    "use_bsd3_license": false,
     "packaging": [
         "poetry",
         "pip-tools"
