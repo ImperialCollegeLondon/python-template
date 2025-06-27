@@ -13,6 +13,10 @@ authors = [
 {%- endif %}
 ]
 {%- if cookiecutter.packaging == "pip-tools" %}
+{%- if cookiecutter.use_bsd3_license %}
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+{%- endif %}
 requires-python = ">=3.13"
 dependencies = []
 
@@ -31,6 +35,9 @@ doc = [
 {%- endif %}
 {%- endif %}
 {%- if cookiecutter.packaging == "poetry" %}
+{%- if cookiecutter.use_bsd3_license %}
+license = {text = "BSD-3-Clause"}
+{%- endif %}
 
 [tool.poetry.dependencies]
 python = "^3.13"
@@ -70,7 +77,7 @@ disallow_untyped_defs = false
 addopts = "-v -p no:warnings --cov={{ cookiecutter.project_slug }} --cov-branch --cov-report=html --cov-report=xml --doctest-modules --ignore={{ cookiecutter.project_slug }}/__main__.py --ignore=docs/"
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py313"
 
 [tool.ruff.lint]
 select = [
@@ -91,11 +98,13 @@ pydocstyle.convention = "google"
 
 {% if cookiecutter.packaging == "pip-tools" -%}
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
+requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.packages.find]
-exclude = ["htmlcov"] # Exclude the coverage report file from setuptools package finder
+[tool.setuptools]
+packages = ["{{ cookiecutter.project_slug }}"]
+
+[tool.setuptools_scm]
 {%- elif cookiecutter.packaging == "poetry" -%}
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

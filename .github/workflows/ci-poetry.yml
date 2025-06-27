@@ -34,7 +34,7 @@ jobs:
 
       - name: Create project from template
         # Choose default options
-        run: cookiecutter . --no-input packaging=poetry rse_team_as_coauthor=true
+        run: cookiecutter . --no-input packaging=poetry rse_team_as_coauthor=true use_bsd3_license=true
 
       - name: Install project dependencies
         working-directory: my_project
@@ -54,3 +54,11 @@ jobs:
           git init
           git add .
           poetry run pre-commit run -a
+
+      - name: Test docs build successfully
+        working-directory: my_project
+        run: poetry run mkdocs build --strict
+
+      - name: Test build is successful
+        working-directory: my_project
+        run: poetry build

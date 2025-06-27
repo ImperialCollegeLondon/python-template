@@ -25,4 +25,5 @@ Fixes # (issue)
 ## Further checks
 
 - [ ] Code is commented, particularly in hard-to-understand areas
-- [ ] Tests added or an issue has been opened to tackle that in the future. (Indicate issue here: # (issue))
+- [ ] Tests added or an issue has been opened to tackle that in the future.
+  (Indicate issue here: # (issue))

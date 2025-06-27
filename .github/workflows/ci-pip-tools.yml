@@ -31,7 +31,7 @@ jobs:
 
       - name: Create project from template
         # Choose default options
-        run: cookiecutter . --no-input packaging=pip-tools rse_team_as_coauthor=true
+        run: cookiecutter . --no-input packaging=pip-tools rse_team_as_coauthor=true use_bsd3_license=true
 
       - name: Install project dependencies
         working-directory: my_project
@@ -39,6 +39,7 @@ jobs:
           git init
           pip install --upgrade pip
           pip install -r dev-requirements.txt
+          pip install -r doc-requirements.txt
           pip install -e .
 
       - name: Run mypy
@@ -54,3 +55,13 @@ jobs:
         run: |
           git add .
           pre-commit run -a
+
+      - name: Test docs build successfully
+        working-directory: my_project
+        run: mkdocs build --strict
+
+      - name: Test build is successful
+        working-directory: my_project
+        run: |
+          pip install --upgrade build
+          python -m build
