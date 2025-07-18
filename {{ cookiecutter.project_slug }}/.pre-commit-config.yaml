@@ -16,6 +16,8 @@ repos:
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.33.1
     hooks:
+      - id: check-dependabot
+      - id: check-github-actions
       - id: check-github-workflows
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.12.0
