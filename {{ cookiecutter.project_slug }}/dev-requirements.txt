@@ -55,7 +55,7 @@ pyyaml==6.0.2
     # via pre-commit
 ruff==0.12.10
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
-typing-extensions==4.14.1
+typing-extensions==4.15.0
     # via mypy
 virtualenv==20.34.0
     # via pre-commit
