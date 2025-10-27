@@ -57,7 +57,7 @@ ruff==0.13.3
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 typing-extensions==4.15.0
     # via mypy
-virtualenv==20.34.0
+virtualenv==20.35.3
     # via pre-commit
 wheel==0.45.1
     # via pip-tools
