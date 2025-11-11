@@ -47,7 +47,9 @@ jobs:
 
       - name: Install project dependencies
         working-directory: my_project
-        run: uv sync --all-groups
+        run: |
+          uv venv .venv
+          uv sync --all-groups
 
       - name: Install pre-commit hooks
         working-directory: my_project
