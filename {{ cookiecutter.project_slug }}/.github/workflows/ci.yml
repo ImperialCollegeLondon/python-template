@@ -29,12 +29,15 @@ jobs:
 {%- if cookiecutter.packaging == "poetry" %}
       - name: Install poetry
         run: pipx install poetry
+{%- elif cookiecutter.packaging == "uv" %}
+      - name: Install uv
+        run: pipx install uv
 {%- endif %}
 
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ "{{" }}matrix.python-version{{ "}}" }}
-          cache: {% if cookiecutter.packaging == "poetry" %}poetry{% else %}pip{% endif %}
+          cache: {% if cookiecutter.packaging == "poetry" %}poetry{% elif cookiecutter.packaging == "uv" %}uv{% else %}pip{% endif %}
 
 {%- if cookiecutter.packaging == "poetry" %}
       - name: Install dependencies
@@ -71,5 +74,20 @@ jobs:
       - name: Check that documentation builds cleanly with MkDocs
         if: matrix.os == 'ubuntu-latest'
         run: mkdocs build --strict
+{%- elif cookiecutter.packaging == "uv" %}
+
+      - name: Install dependencies
+        run: uv sync --all-groups
+
+      - name: Run mypy
+        run: uv run mypy .
+
+      - name: Run tests
+        run: uv run pytest
+{%- if cookiecutter.mkdocs %}
+
+      - name: Check that documentation builds cleanly with MkDocs
+        if: matrix.os == 'ubuntu-latest'
+        run: uv run mkdocs build --strict
 {%- endif %}
 {%- endif %}
