@@ -48,6 +48,10 @@ jobs:
         working-directory: my_project
         run: uv sync --all-groups
 
+      - name: Install pre-commit hooks
+        working-directory: my_project
+        run: uv run pre-commit install
+
       - name: Run mypy
         working-directory: my_project
         run: uv run mypy .
@@ -61,7 +65,7 @@ jobs:
         run: |
           git init
           git add .
-          uv run pre-commit run -a
+          uv run pre-commit run -all-files
 
       - name: Test docs build successfully
         working-directory: my_project
