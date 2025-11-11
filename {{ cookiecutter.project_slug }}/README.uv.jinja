@@ -41,7 +41,7 @@ the virtual environment will install any missing dependencies automatically:
 5. Update the pre-commit hooks
 
    ```bash
-   un run pre-commit autoupdate
+   uv run pre-commit autoupdate
    ```
 
 6. Run the main app:
@@ -65,9 +65,9 @@ the virtual environment will install any missing dependencies automatically:
 
 ## Updating Dependencies
 
-- Use the commands `uv add <package>` and `uv remove <package>` to add or remove dependencies.
-   - Include the optional flag `--group` to add/remove dependencies from specific groups.
-   - These will automatically update the `pyproject.toml` file.
+Use the commands `uv add <package>` and `uv remove <package>` to add or remove dependencies.
+- Include the optional flag `--group` to add/remove dependencies from specific groups.
+- These will automatically update the `pyproject.toml` file.
 
 For further information, see the [uv] docs for managing dependencies.
 
