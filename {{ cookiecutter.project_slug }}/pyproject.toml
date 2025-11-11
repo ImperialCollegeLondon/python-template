@@ -99,7 +99,7 @@ pydocstyle.convention = "google"
     "D100", # Missing docstring in public module
     "D104", # Missing docstring in public package
 ]
-{% if cookiecutter.packaging == "pip-tools" -%}
+{% if cookiecutter.packaging != "poetry" -%}
 [build-system]
 requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"

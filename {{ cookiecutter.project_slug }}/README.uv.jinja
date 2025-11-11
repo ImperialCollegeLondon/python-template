@@ -11,13 +11,19 @@ It was developed by the [Imperial College Research Software Engineering Team].
 To get started:
 
 1. [Download and install uv] following the instructions for your OS.
-2. Set up the virtual environment.:
+2. Set up the virtual environment:
 
    ```bash
    uv venv .venv
    ```
 
-3. Activate the virtual environment, or just preface your commands with `uv run` to use
+3. Initialise the Git repository:
+
+   ```bash
+   git init
+   ```
+
+4. Activate the virtual environment, or just preface your commands with `uv run` to use
 the virtual environment (see [uv activate] for more info). Each time `uv run` is called,
 the virtual environment will install any missing dependencies automatically:
 
@@ -32,31 +38,31 @@ the virtual environment will install any missing dependencies automatically:
    uv run <command>
    ```
 
-4. Install the pre-commit git hooks:
+5. Install the pre-commit git hooks:
 
    ```bash
    uv run pre-commit install
    ```
 
-5. Update the pre-commit hooks
+6. Update the pre-commit hooks
 
    ```bash
    uv run pre-commit autoupdate
    ```
 
-6. Run the main app:
+7. Run the main app:
 
    ```bash
    uv run python -m {{ cookiecutter.project_slug }}
    ```
 
-7. Run the tests:
+8. Run the tests:
 
    ```bash
    uv run pytest
    ```
 
-8. Create an initial commit (it's possible there might be some failures in pre-commit):
+9. Create an initial commit (it's possible there might be some failures in pre-commit):
 
    ```bash
    git add .
@@ -66,6 +72,7 @@ the virtual environment will install any missing dependencies automatically:
 ## Updating Dependencies
 
 Use the commands `uv add <package>` and `uv remove <package>` to add or remove dependencies.
+
 - Include the optional flag `--group` to add/remove dependencies from specific groups.
 - These will automatically update the `pyproject.toml` file.
 
