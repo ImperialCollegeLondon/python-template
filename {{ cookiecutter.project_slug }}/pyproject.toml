@@ -12,6 +12,8 @@ authors = [
     {name = "Imperial College London RSE Team", email = "ict-rse-team@imperial.ac.uk"},
 {%- endif %}
 ]
+
+
 {%- if cookiecutter.packaging == "pip-tools" %}
 {%- if cookiecutter.use_bsd3_license %}
 license = "BSD-3-Clause"
@@ -20,6 +22,9 @@ license-files = ["LICENSE"]
 requires-python = ">=3.13"
 dependencies = []
 
+{%- if cookiecutter.packaging == "uv" %}
+[dependency-groups]
+{%- else %}
 [project.optional-dependencies]
 dev = ["ruff", "mypy", "pip-tools", "pre-commit", "pytest", "pytest-cov", "pytest-mock"]
 {% if cookiecutter.mkdocs -%}
