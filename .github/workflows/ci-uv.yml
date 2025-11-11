@@ -52,8 +52,8 @@ jobs:
       - name: Install pre-commit hooks
         working-directory: my_project
         run: |
-         git init
-         uv run pre-commit install
+          git init
+          uv run pre-commit install
 
       - name: Run mypy
         working-directory: my_project
