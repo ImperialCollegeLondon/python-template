@@ -116,4 +116,3 @@ build-backend = "poetry.core.masonry.api"
 packages = ["{{ cookiecutter.project_slug }}"]
 
 [tool.setuptools_scm]
-
