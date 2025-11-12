@@ -47,15 +47,7 @@ jobs:
 
       - name: Install project dependencies
         working-directory: my_project
-        run: |
-          uv venv .venv
-          uv sync --all-groups
-
-      - name: Install pre-commit hooks
-        working-directory: my_project
-        run: |
-          git init
-          uv run pre-commit install
+        run: uv sync --all-groups
 
       - name: Run mypy
         working-directory: my_project
@@ -68,6 +60,8 @@ jobs:
       - name: Run pre-commit hooks for project
         working-directory: my_project
         run: |
+          git init
+          uv run pre-commit install
           git add .
           uv run pre-commit run -a
 
@@ -77,5 +71,4 @@ jobs:
 
       - name: Test build is successful
         working-directory: my_project
-        run: |
-          uv build
+        run: uv build
