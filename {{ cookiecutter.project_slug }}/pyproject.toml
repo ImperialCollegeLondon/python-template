@@ -101,25 +101,15 @@ pydocstyle.convention = "google"
     "D104", # Missing docstring in public package
 ]
 
-{%- if cookiecutter.packaging == "pip-tools" -%}
 [build-system]
+{%- if cookiecutter.packaging == "poetry" or cookiecutter.packaging == "uv" %}
 requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
-{%- elif cookiecutter.packaging == "uv" -%}
-[build-system]
-requires = ["uv_build>=0.9.7,<0.10.0"]
-build-backend = "uv_build"
-
 {%- elif cookiecutter.packaging == "poetry" -%}
-[build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-{%- else -%}
-[build-system]
-requires = ["setuptools>=78"]
-build-backend = "setuptools.build_meta"
 {%- endif %}
 
 [tool.setuptools]
