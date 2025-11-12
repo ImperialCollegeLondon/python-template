@@ -1,10 +1,11 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
-{%- if cookiecutter.packaging == "poetry" %}
+{%- if cookiecutter.packaging == "poetry" or cookiecutter.packaging == "uv" %}
 version = "0.1.0"
 {%- else %}
 dynamic = ["version"]
 {%- endif %}
+
 description = "{{ cookiecutter.project_description }}"
 authors = [
     {name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}"}
@@ -99,21 +100,19 @@ pydocstyle.convention = "google"
     "D100", # Missing docstring in public module
     "D104", # Missing docstring in public package
 ]
-{% if cookiecutter.packaging == "pip-tools" -%}
+
+
+{%- if cookiecutter.packaging == "pip-tools" or cookiecutter.packaging == "uv" %}
 [build-system]
 requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
-{%- elif cookiecutter.packaging == "uv" -%}
-[build-system]
-requires = ["uv_build>=0.9.7,<0.10.0"]
-build-backend = "uv_build"
-{%- endif %}
-[tool.setuptools]
-packages = ["{{ cookiecutter.project_slug }}"]
-
-[tool.setuptools_scm]
-{%- if cookiecutter.packaging == "poetry" -%}
+{%- else %}
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 {%- endif %}
+
+[tool.setuptools]
+packages = ["{{ cookiecutter.project_slug }}"]
+
+[tool.setuptools_scm]
