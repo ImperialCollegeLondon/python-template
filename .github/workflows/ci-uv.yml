@@ -18,21 +18,22 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # might need to replace this with pipx install uv
+      # recommended way to install uv, python, (and I guess also cookiecutter) is:
       #- name: Install the latest version of uv
       #  uses: astral-sh/setup-uv@v6
-      #  with:
-      #    enable-cache: true
-      #    activate-environment: true
-      #    python-version: ${{ matrix.python-version }}
-
-      - name: Install uv
-        run: pipx install uv
+      #- name: Set up Python
+      #  run: uv python install ${{ matrix.python-version }}
+      #
+      #- name: Install cookiecutter and pytest dependencies
+      #  run: uvx install cookiecutter pytest
 
       - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v6
 
       - name: Install cookiecutter and pytest dependencies
         run: pip install -r dev-requirements.txt
@@ -46,7 +47,15 @@ jobs:
 
       - name: Install project dependencies
         working-directory: my_project
-        run: uv sync --all-groups
+        run: |
+          uv venv .venv
+          uv sync --all-groups
+
+      - name: Install pre-commit hooks
+        working-directory: my_project
+        run: |
+          git init
+          uv run pre-commit install
 
       - name: Run mypy
         working-directory: my_project
@@ -59,7 +68,6 @@ jobs:
       - name: Run pre-commit hooks for project
         working-directory: my_project
         run: |
-          git init
           git add .
           uv run pre-commit run -a
 
