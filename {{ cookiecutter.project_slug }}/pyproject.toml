@@ -117,7 +117,7 @@ build-backend = "uv_build"
 packages = ["{{ cookiecutter.project_slug }}"]
 
 [tool.setuptools_scm]
-{%- if cookiecutter.packaging == "poetry" -%}
+{%- elif cookiecutter.packaging == "poetry" -%}
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
