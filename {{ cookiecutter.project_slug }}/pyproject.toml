@@ -2,6 +2,8 @@
 name = "{{ cookiecutter.project_slug }}"
 {%- if cookiecutter.packaging == "poetry" %}
 version = "0.1.0"
+{%- elif cookiecutter.packaging == "uv" %}
+version = "0.1.0"
 {%- else %}
 dynamic = ["version"]
 {%- endif %}
