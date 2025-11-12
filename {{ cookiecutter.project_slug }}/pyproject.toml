@@ -102,14 +102,15 @@ pydocstyle.convention = "google"
 ]
 
 
-{%- if cookiecutter.packaging == "poetry" %}
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
-{%- else %}
+{%- if cookiecutter.packaging == "pip-tools" or cookiecutter.packaging == "uv" %}
 [build-system]
 requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
+{%- else %}
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+{%- endif %}
 
 [tool.setuptools]
 packages = ["{{ cookiecutter.project_slug }}"]
