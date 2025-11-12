@@ -102,7 +102,7 @@ pydocstyle.convention = "google"
 ]
 
 
-{%- if cookiecutter.packaging == "poetry" or cookiecutter.packaging == "uv" %}
+{%- if cookiecutter.packaging == "pip-tools" or cookiecutter.packaging == "uv" %}
 [build-system]
 requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
