@@ -42,7 +42,7 @@ pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-pytest==8.4.2
+pytest==9.0.1
     # via
     #   {{ cookiecutter.project_slug }} (pyproject.toml)
     #   pytest-cov
