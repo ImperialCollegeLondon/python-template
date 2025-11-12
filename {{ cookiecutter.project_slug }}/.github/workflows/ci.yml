@@ -78,7 +78,7 @@ jobs:
 {%- elif cookiecutter.packaging == "uv" %}
 
       - name: Install dependencies
-        run: uv sync --all-groups
+        run: uv sync
 
       - name: Run mypy
         run: uv run mypy .
@@ -86,6 +86,9 @@ jobs:
       - name: Run tests
         run: uv run pytest
 {%- if cookiecutter.mkdocs %}
+
+      - name: Install doc dependencies
+        run: uv sync --group doc
 
       - name: Check that documentation builds cleanly with MkDocs
         if: matrix.os == 'ubuntu-latest'
