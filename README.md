@@ -9,7 +9,7 @@ This repo contains a [`cookiecutter`] template for a Python project, including
 [`pre-commit`] hooks for linting and GitHub Actions for automatically running tests
 using [`pytest`].
 
-The template supports two Python packaging tools: [`poetry`], [`pip-tools`] and [`uv`].
+The template supports three Python packaging tools: [`poetry`], [`pip-tools`] and [`uv`].
 
 It is particularly geared towards the needs of Imperial College's [Research Software
 Engineering team], but hopefully it should be generically useful. If you find any
