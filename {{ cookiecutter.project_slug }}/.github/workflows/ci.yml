@@ -30,10 +30,10 @@ jobs:
       - name: Install poetry
         run: pipx install poetry
 {%- elif cookiecutter.packaging == "uv" %}
-      - uses: astral-sh/setup-uv@v6  
-        enable-cache: true  
-        activate-environment: true  
-        python-version: ${{ matrix.python-version }}  
+      - uses: astral-sh/setup-uv@v6
+        enable-cache: true
+        activate-environment: true
+        python-version: ${{ matrix.python-version }}
 {%- endif %}
 
 {%- if cookiecutter.packaging != "uv" %}
@@ -89,4 +89,3 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: {% if cookiecutter.packaging == "poetry" %}poetry run mkdocs build --strict{% elif cookiecutter.packaging == "uv" %}uv run mkdocs build --strict{% else %}mkdocs build --strict{% endif %}
 {%- endif %}
-
