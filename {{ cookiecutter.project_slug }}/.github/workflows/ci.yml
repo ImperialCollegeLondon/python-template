@@ -1,4 +1,4 @@
-name: Test and build package
+name: Test and build
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ "{{" }}matrix.os{{ "}}" }}
     strategy:
       fail-fast: false
       matrix:
@@ -33,7 +33,7 @@ jobs:
       - uses: astral-sh/setup-uv@v6
         enable-cache: true
         activate-environment: true
-        python-version: ${{ matrix.python-version }}
+        python-version: ${{ "{{" }} matrix.python-version {{ "{{" }}
 {%- endif %}
 
 {%- if cookiecutter.packaging != "uv" %}
@@ -86,5 +86,5 @@ jobs:
 {%- endif %}
       - name: Check that documentation builds cleanly with MkDocs
         if: matrix.os == 'ubuntu-latest'
-        run: {% if cookiecutter.packaging == "poetry" %}poetry run mkdocs build --strict{% elif cookiecutter.packaging == "uv" %}uv run mkdocs build --strict{% else %}mkdocs build --strict{% endif %}
+        run: {% if cookiecutter.packaging == "poetry" %}poetry run mkdocs build --strict{% else %}mkdocs build --strict{% endif %}
 {%- endif %}
