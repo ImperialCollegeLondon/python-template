@@ -1,4 +1,4 @@
-name: Tests (uv)
+name: Test (uv)
 
 on:
   push:
