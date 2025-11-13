@@ -26,16 +26,24 @@ dependencies = []
 {%- else %}
 [project.optional-dependencies]
 {%- endif %}
-dev = ["ruff", "mypy", "pip-tools", "pre-commit", "pytest", "pytest-cov", "pytest-mock"]
+dev = [
+    "ruff<1.0.0,>=0.14.4",
+    "mypy<2.0.0,>=1.18.2",
+    "pip-tools<8.0.0,>=7.5.1",
+    "pre-commit<5.0.0,>=4.4.0",
+    "pytest<10.0.0,>=9.0.0",
+    "pytest-cov<8.0.0,>=7.0.0",
+    "pytest-mock<4.0.0,>=3.15.1",
+]
 {% if cookiecutter.mkdocs -%}
 doc = [
-    "mkdocs",
-    "mkdocstrings",
-    "mkdocstrings-python",
-    "mkdocs-material",
-    "mkdocs-gen-files",
-    "mkdocs-literate-nav",
-    "mkdocs-section-index",
+    "mkdocs<2.0.0,>=1.6.1",
+    "mkdocstrings<1.0.0,>=0.30.1",
+    "mkdocstrings-python<2.0.0,>=1.18.2",
+    "mkdocs-material<10.0.0,>=9.6.23",
+    "mkdocs-gen-files<1.0.0,>=0.5.0",
+    "mkdocs-literate-nav<1.0.0,>=0.6.2",
+    "mkdocs-section-index<1.0.0,>=0.3.10",
 ]
 {%- endif %}
 {%- endif %}
@@ -106,13 +114,13 @@ pydocstyle.convention = "google"
 [build-system]
 requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
-{%- else %}
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
-{%- endif %}
 
 [tool.setuptools]
 packages = ["{{ cookiecutter.project_slug }}"]
 
 [tool.setuptools_scm]
+{%- else %}
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+{%- endif %}
