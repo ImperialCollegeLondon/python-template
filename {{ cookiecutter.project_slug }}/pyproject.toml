@@ -27,23 +27,23 @@ dependencies = []
 [project.optional-dependencies]
 {%- endif %}
 dev = [
-    "ruff<1.0.0,>=0.14.4",
-    "mypy<2.0.0,>=1.18.2",
-    "pip-tools<8.0.0,>=7.5.1",
-    "pre-commit<5.0.0,>=4.4.0",
-    "pytest<10.0.0,>=9.0.0",
-    "pytest-cov<8.0.0,>=7.0.0",
-    "pytest-mock<4.0.0,>=3.15.1",
+    "ruff = \"VERSION\"",
+    "mypy = \"VERSION\"",
+    "pip-tools = \"VERSION\"",
+    "pre-commit = \"VERSION\"",
+    "pytest = \"VERSION\"",
+    "pytest-cov = \"VERSION\"",
+    "pytest-mock = \"VERSION\"",
 ]
 {% if cookiecutter.mkdocs -%}
 doc = [
-    "mkdocs<2.0.0,>=1.6.1",
-    "mkdocstrings<1.0.0,>=0.30.1",
-    "mkdocstrings-python<2.0.0,>=1.18.2",
-    "mkdocs-material<10.0.0,>=9.6.23",
-    "mkdocs-gen-files<1.0.0,>=0.5.0",
-    "mkdocs-literate-nav<1.0.0,>=0.6.2",
-    "mkdocs-section-index<1.0.0,>=0.3.10",
+    "mkdocs = \"VERSION\"",
+    "mkdocstrings = \"VERSION\"",
+    "mkdocstrings-python = \"VERSION\"",
+    "mkdocs-material = \"VERSION\"",
+    "mkdocs-gen-files = \"VERSION\"",
+    "mkdocs-literate-nav = \"VERSION\"",
+    "mkdocs-section-index = \"VERSION\"",
 ]
 {%- endif %}
 {%- endif %}
@@ -110,7 +110,7 @@ pydocstyle.convention = "google"
 ]
 
 
-{%- if cookiecutter.packaging == "pip-tools" or cookiecutter.packaging == "uv" %}
+{%- if cookiecutter.packaging != "poetry" %}
 [build-system]
 requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
