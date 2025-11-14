@@ -27,23 +27,23 @@ dependencies = []
 [project.optional-dependencies]
 {%- endif %}
 dev = [
-    "ruff = \"VERSION\"",
-    "mypy = \"VERSION\"",
-    "pip-tools = \"VERSION\"",
-    "pre-commit = \"VERSION\"",
-    "pytest = \"VERSION\"",
-    "pytest-cov = \"VERSION\"",
-    "pytest-mock = \"VERSION\"",
+    "ruff>=VERSION",
+    "mypy>=VERSION",
+    "pip-tools>=VERSION",
+    "pre-commit>=VERSION",
+    "pytest>=VERSION",
+    "pytest-cov>=VERSION",
+    "pytest-mock>=VERSION",
 ]
 {% if cookiecutter.mkdocs -%}
 doc = [
-    "mkdocs = \"VERSION\"",
-    "mkdocstrings = \"VERSION\"",
-    "mkdocstrings-python = \"VERSION\"",
-    "mkdocs-material = \"VERSION\"",
-    "mkdocs-gen-files = \"VERSION\"",
-    "mkdocs-literate-nav = \"VERSION\"",
-    "mkdocs-section-index = \"VERSION\"",
+    "mkdocs>=VERSION",
+    "mkdocstrings>=VERSION",
+    "mkdocstrings-python>=VERSION",
+    "mkdocs-material>=VERSION",
+    "mkdocs-gen-files>=VERSION",
+    "mkdocs-literate-nav>=VERSION",
+    "mkdocs-section-index>=VERSION",
 ]
 {%- endif %}
 {%- endif %}
