@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: pip
+  - package-ecosystem: {% if cookiecutter.packaging == "uv" %}uv{% else %}pip{% endif %}
     directory: /
     schedule:
       interval: weekly
