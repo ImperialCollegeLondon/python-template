@@ -1,2 +1,4 @@
 # Disable checks here
 MD013: false
+MD007:
+  indent: 4

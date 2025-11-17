@@ -18,60 +18,60 @@ To get started:
 1. Activate a git repository (required for `pre-commit` and the package versioning with
 `setuptools-scm`):
 
-   ```bash
-   git init
-   ```
+    ```bash
+    git init
+    ```
 
 1. Create and activate a [virtual environment]:
 
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate # with Powershell on Windows: `.venv\Scripts\Activate.ps1`
-   ```
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate # with Powershell on Windows: `.venv\Scripts\Activate.ps1`
+    ```
 
 1. Install development requirements and the package in editable mode:
 
-   ```bash
-   pip install -r dev-requirements.txt
-   pip install -e .
-   ```
+    ```bash
+    pip install -r dev-requirements.txt
+    pip install -e .
+    ```
 {% if cookiecutter.mkdocs %}
 1. (Optionally) install tools for building documentation:
 
-   ```bash
-   pip install -r doc-requirements.txt
-   ```
+    ```bash
+    pip install -r doc-requirements.txt
+    ```
 {% endif %}
 1. Install the pre-commit git hooks:
 
-   ```bash
-   pre-commit install
-   ```
+    ```bash
+    pre-commit install
+    ```
 
 1. Update the pre-commit hooks
 
-   ```bash
-   pre-commit autoupdate
-   ```
+    ```bash
+    pre-commit autoupdate
+    ```
 
 1. Run the main app:
 
-   ```bash
-   python -m {{ cookiecutter.project_slug }}
-   ```
+    ```bash
+    python -m {{ cookiecutter.project_slug }}
+    ```
 
 1. Run the tests:
 
-   ```bash
-   pytest
-   ```
+    ```bash
+    pytest
+    ```
 
 1. Create an initial commit (it's possible there might be some failures in pre-commit):
 
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   ```
+    ```bash
+    git add .
+    git commit -m "Initial commit"
+    ```
 
 ## Updating Dependencies
 
@@ -80,12 +80,12 @@ To add or remove dependencies:
 1. Edit the `dependencies` variables in the `pyproject.toml` file (aim to keep
 development tools separate from the project requirements).
 1. Update the requirements files:
-   - `pip-compile` for `requirements.txt` - the project requirements.
-   - `pip-compile --extra dev -o dev-requirements.txt` for the development requirements.
-{% if cookiecutter.mkdocs %}   - `pip-compile --extra doc -o doc-requirements.txt` for
+    - `pip-compile` for `requirements.txt` - the project requirements.
+    - `pip-compile --extra dev -o dev-requirements.txt` for the development requirements.
+{% if cookiecutter.mkdocs %}    - `pip-compile --extra doc -o doc-requirements.txt` for
 the documentation tools.
 {% endif %}1. Sync the files with your installation (install packages):
-   - `pip-sync *requirements.txt`
+    - `pip-sync *requirements.txt`
 
 To upgrade pinned versions, use the `--upgrade` flag with `pip-compile`.
 
@@ -98,12 +98,12 @@ All configuration can be customised to your preferences. The key places to make 
 for this are:
 
 - The `pyproject.toml` file, where you can edit:
-  - The build system (change from setuptools to other packaging tools like [Hatch] or
+   - The build system (change from setuptools to other packaging tools like [Hatch] or
 [flit]).
-  - The python version.
-  - The project dependencies. Extra optional dependencies can be added by adding another
-list under `[project.optional-dependencies]` (i.e. `doc = ["mkdocs"]`).
-  - The `mypy` and `pytest` configurations.
+   - The python version.
+   - The project dependencies. Extra optional dependencies can be added by adding
+another list under `[project.optional-dependencies]` (i.e. `doc = ["mkdocs"]`).
+   - The `mypy` and `pytest` configurations.
 - The `.pre-commit-config.yaml` for pre-commit settings.
 - The `.github` directory for all the CI configuration.
 

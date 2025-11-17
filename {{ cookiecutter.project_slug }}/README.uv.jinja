@@ -16,60 +16,60 @@ To get started:
 1. Activate a git repository (required for `pre-commit` and the package versioning with
 `setuptools-scm`):
 
-   ```bash
-   git init
-   ```
+    ```bash
+    git init
+    ```
 
 1. Install the package and dependencies and set up the virtual environment:
 
-   ```bash
-   uv sync
-   ```
+    ```bash
+    uv sync
+    ```
 
 1. Activate the virtual environment, or just preface your commands with `uv run` to use
 the virtual environment (see [uv activate] for more info):
 
-   ```bash
-   source .venv/bin/activate
-   <command>
-   ```
+    ```bash
+    source .venv/bin/activate
+    <command>
+    ```
 
-   or
+    or
 
-   ```bash
-   uv run <command>
-   ```
+    ```bash
+    uv run <command>
+    ```
 
 1. Install the pre-commit git hooks:
 
-   ```bash
-   uv run pre-commit install
-   ```
+    ```bash
+    uv run pre-commit install
+    ```
 
 1. Update the pre-commit hooks
 
-   ```bash
-   uv run pre-commit autoupdate
-   ```
+    ```bash
+    uv run pre-commit autoupdate
+    ```
 
 1. Run the main app:
 
-   ```bash
-   uv run python -m {{ cookiecutter.project_slug }}
-   ```
+    ```bash
+    uv run python -m {{ cookiecutter.project_slug }}
+    ```
 
 1. Run the tests:
 
-   ```bash
-   uv run pytest
-   ```
+    ```bash
+    uv run pytest
+    ```
 
 1. Create an initial commit (it's possible there might be some failures in pre-commit):
 
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   ```
+    ```bash
+    git add .
+    git commit -m "Initial commit"
+    ```
 
 ## Updating Dependencies
 
