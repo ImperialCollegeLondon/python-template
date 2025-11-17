@@ -9,7 +9,8 @@ This repo contains a [`cookiecutter`] template for a Python project, including
 [`pre-commit`] hooks for linting and GitHub Actions for automatically running tests
 using [`pytest`].
 
-The template supports three Python packaging tools: [`poetry`], [`pip-tools`] and [`uv`].
+The template supports three Python packaging tools: [`poetry`], [`pip-tools`]
+and [`uv`].
 
 It is particularly geared towards the needs of Imperial College's [Research Software
 Engineering team], but hopefully it should be generically useful. If you find any
@@ -41,10 +42,10 @@ To use this template for your own application:
 
 ## Auto-merging bot PRs
 
-This template optionally includes a [GitHub Actions] workflow to automatically merge PRs
-from bots (specifically for [dependabot] and [pre-commit.ci]). However, in order for
-this to work, you will first need to [follow GitHub's instructions] for enabling
-auto-merge on your repository.
+This template optionally includes a [GitHub Actions] workflow to automatically
+merge PRs from bots (specifically for [dependabot] and [pre-commit.ci]).
+However, in order for this to work, you will first need to [follow GitHub's instructions]
+for enabling auto-merge on your repository.
 
 [GitHub Actions]: https://github.com/features/actions
 [dependabot]: https://github.com/dependabot
