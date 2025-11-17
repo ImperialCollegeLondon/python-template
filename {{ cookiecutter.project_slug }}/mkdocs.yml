@@ -9,6 +9,7 @@ extra_css:
 
 markdown_extensions:
   - admonition
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
