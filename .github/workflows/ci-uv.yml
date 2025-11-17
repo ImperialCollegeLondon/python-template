@@ -17,10 +17,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
-        with:
-          python-version: ${{ matrix.python-version }}
-          cache: pip
 
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v6
@@ -29,7 +25,12 @@ jobs:
           prune-cache: false
           python-version: ${{ matrix.python-version }}
 
-      - name: Install cookiecutter and pytest dependencies
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
         run: pip install -r dev-requirements.txt
 
       - name: Run unit tests
@@ -41,7 +42,9 @@ jobs:
 
       - name: Install project dependencies
         working-directory: my_project
-        run: uv sync --all-groups
+        run: |
+          git init
+          uv sync --all-groups
 
       - name: Run mypy
         working-directory: my_project
@@ -54,8 +57,6 @@ jobs:
       - name: Run pre-commit hooks for project
         working-directory: my_project
         run: |
-          git init
-          uv run pre-commit install
           git add .
           uv run pre-commit run -a
 

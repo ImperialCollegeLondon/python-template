@@ -2,7 +2,9 @@ This is a Python application that uses [uv] for packaging and dependency managem
 It  provides [`pre-commit`][pre-commit] hooks for various linters
 and formatters and automated tests using [`pytest`][pytest] and [GitHub Actions].
 Pre-commit hooks are automatically kept updated with a dedicated GitHub Action, this can
-be removed and replaced with [pre-commit.ci] if using a public repo.
+be removed and replaced with [pre-commit.ci] if using a public repo. The package version
+is dynamically generated from the most recent git tag using
+[`setuptools-scm`][setuptools-scm].
 
 It was developed by the [Imperial College Research Software Engineering Team].
 
@@ -11,19 +13,20 @@ It was developed by the [Imperial College Research Software Engineering Team].
 To get started:
 
 1. [Download and install uv] following the instructions for your OS.
-2. Set up the virtual environment:
-
-   ```bash
-   uv sync
-   ```
-
-3. Initialise the Git repository:
+1. Activate a git repository (required for `pre-commit` and the package versioning with
+`setuptools-scm`):
 
    ```bash
    git init
    ```
 
-4. Activate the virtual environment, or just preface your commands with `uv run` to use
+1. Install the package and dependencies and set up the virtual environment:
+
+   ```bash
+   uv sync
+   ```
+
+1. Activate the virtual environment, or just preface your commands with `uv run` to use
 the virtual environment (see [uv activate] for more info):
 
    ```bash
@@ -37,31 +40,31 @@ the virtual environment (see [uv activate] for more info):
    uv run <command>
    ```
 
-5. Install the pre-commit git hooks:
+1. Install the pre-commit git hooks:
 
    ```bash
    uv run pre-commit install
    ```
 
-6. Update the pre-commit hooks
+1. Update the pre-commit hooks
 
    ```bash
    uv run pre-commit autoupdate
    ```
 
-7. Run the main app:
+1. Run the main app:
 
    ```bash
    uv run python -m {{ cookiecutter.project_slug }}
    ```
 
-8. Run the tests:
+1. Run the tests:
 
    ```bash
    uv run pytest
    ```
 
-9. Create an initial commit (it's possible there might be some failures in pre-commit):
+1. Create an initial commit (it's possible there might be some failures in pre-commit):
 
    ```bash
    git add .
@@ -83,5 +86,7 @@ For further information, see the [uv] docs for managing dependencies.
 [pytest]: https://pytest.org/
 [GitHub Actions]: https://github.com/features/actions
 [pre-commit.ci]: https://pre-commit.ci
+[setuptools-scm]: https://setuptools-scm.readthedocs.io/en/latest/
+[Imperial College Research Software Engineering Team]: https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/
 [Download and install uv]: https://docs.astral.sh/uv/getting-started/installation/
 [uv activate]: https://docs.astral.sh/uv/pip/environments/
