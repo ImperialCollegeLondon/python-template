@@ -58,7 +58,6 @@ def update_poetry_dependencies(pyproject_path: str = "pyproject.toml"):
     with open(pyproject_path, "w") as f:
         f.write(output)
 
-
 def update_uv_dependencies(pyproject_path: str = "pyproject.toml"):
     """Patch the versions of packages in pyproject.toml."""
     packages = read_package_versions(
@@ -74,7 +73,8 @@ def update_uv_dependencies(pyproject_path: str = "pyproject.toml"):
                 operator = match.group(2)
                 version = packages[name.lower()]
                 comma = "," if line.strip().endswith(",") else ""
-                output += f'"{name}{operator}{version}"{comma}\n'
+                output += f'    "{name}{operator}{version}"{comma}\n'
+                print(f"Line: {output}")
             else:
                 output += line
     with open(pyproject_path, "w") as f:

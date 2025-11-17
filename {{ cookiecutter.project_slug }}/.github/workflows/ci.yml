@@ -31,9 +31,11 @@ jobs:
         run: pipx install poetry
 {%- elif cookiecutter.packaging == "uv" %}
       - uses: astral-sh/setup-uv@v6
-        enable-cache: true
-        activate-environment: true
-        python-version: ${{ "{{" }} matrix.python-version {{ "{{" }}
+        with:
+          enable-cache: true
+          prune-cache: false
+          activate-environment: true
+          python-version: ${{ "{{" }} matrix.python-version {{ "}}" }}
 {%- endif %}
 
 {%- if cookiecutter.packaging != "uv" %}
@@ -70,10 +72,10 @@ jobs:
         run: uv sync
 
       - name: Run mypy
-        run:  mypy .
+        run: mypy .
 
       - name: Run tests
-        run:  pytest
+        run: pytest
 
 {%- endif %}
 {%- if cookiecutter.mkdocs %}
