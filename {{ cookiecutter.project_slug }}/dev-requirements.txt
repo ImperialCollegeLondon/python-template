@@ -32,7 +32,7 @@ packaging==25.0
     #   pytest
 pip-tools==7.5.1
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
-platformdirs==4.4.0
+platformdirs==4.5.0
     # via virtualenv
 pluggy==1.6.0
     # via pytest
@@ -42,7 +42,7 @@ pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-pytest==8.4.2
+pytest==9.0.1
     # via
     #   {{ cookiecutter.project_slug }} (pyproject.toml)
     #   pytest-cov
@@ -57,7 +57,7 @@ ruff==0.13.3
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 typing-extensions==4.15.0
     # via mypy
-virtualenv==20.35.3
+virtualenv==20.35.4
     # via pre-commit
 wheel==0.45.1
     # via pip-tools
