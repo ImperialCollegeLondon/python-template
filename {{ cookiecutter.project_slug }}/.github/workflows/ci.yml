@@ -80,12 +80,15 @@ jobs:
 {%- endif %}
 {%- if cookiecutter.mkdocs %}
 {%- if cookiecutter.packaging == "uv" %}
+
       - name: Install doc dependencies
         run: uv sync --group doc
 {%- elif cookiecutter.packaging == "pip-tools" %}
+
       - name: Install doc dependencies
         run: pip install -r doc-requirements.txt
 {%- endif %}
+
       - name: Check that documentation builds cleanly with MkDocs
         if: matrix.os == 'ubuntu-latest'
         run: {% if cookiecutter.packaging == "poetry" %}poetry run mkdocs build --strict{% else %}mkdocs build --strict{% endif %}
