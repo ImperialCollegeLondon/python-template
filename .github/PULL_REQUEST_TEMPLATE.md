@@ -1,10 +1,10 @@
 # Description
 
-_Please include a summary of the change and which issue is fixed (if any). Please also
-include relevant motivation and context. List any dependencies that are required for
-this change._
+_Please include a summary of the change and which issue is fixed (if any).
+Please also include relevant motivation and context. List any dependencies that
+are required for this change._
 
-Fixes # (issue)
+Close # (issue)
 
 ## Type of change
 

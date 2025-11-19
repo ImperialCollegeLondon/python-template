@@ -29,12 +29,21 @@ jobs:
 {%- if cookiecutter.packaging == "poetry" %}
       - name: Install poetry
         run: pipx install poetry
+{%- elif cookiecutter.packaging == "uv" %}
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          prune-cache: false
+          activate-environment: true
+          python-version: ${{ "{{" }} matrix.python-version {{ "}}" }}
 {%- endif %}
 
+{%- if cookiecutter.packaging != "uv" %}
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ "{{" }}matrix.python-version{{ "}}" }}
-          cache: {% if cookiecutter.packaging == "poetry" %}poetry{% else %}pip{% endif %}
+          cache: {% if cookiecutter.packaging == "poetry" %}poetry{% elif cookiecutter.packaging == "pip-tools" %}pip{% endif %}
+{%- endif %}
 
 {%- if cookiecutter.packaging == "poetry" %}
       - name: Install dependencies
@@ -45,12 +54,6 @@ jobs:
 
       - name: Run tests
         run: poetry run pytest
-{%- if cookiecutter.mkdocs %}
-
-      - name: Check that documentation builds cleanly with MkDocs
-        if: matrix.os == 'ubuntu-latest'
-        run: poetry run mkdocs build --strict
-{%- endif %}
 {%- elif cookiecutter.packaging == "pip-tools" %}
       - name: Install dependencies
         run: |
@@ -63,13 +66,30 @@ jobs:
 
       - name: Run tests
         run: pytest
+{%- elif cookiecutter.packaging == "uv" %}
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run mypy
+        run: mypy .
+
+      - name: Run tests
+        run: pytest
+
+{%- endif %}
 {%- if cookiecutter.mkdocs %}
+{%- if cookiecutter.packaging == "uv" %}
+
+      - name: Install doc dependencies
+        run: uv sync --group doc
+{%- elif cookiecutter.packaging == "pip-tools" %}
 
       - name: Install doc dependencies
         run: pip install -r doc-requirements.txt
+{%- endif %}
 
       - name: Check that documentation builds cleanly with MkDocs
         if: matrix.os == 'ubuntu-latest'
-        run: mkdocs build --strict
-{%- endif %}
+        run: {% if cookiecutter.packaging == "poetry" %}poetry run mkdocs build --strict{% else %}mkdocs build --strict{% endif %}
 {%- endif %}

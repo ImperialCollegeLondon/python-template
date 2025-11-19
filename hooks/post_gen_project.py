@@ -20,6 +20,9 @@ def main():
     # {% if cookiecutter.packaging == 'poetry' %}
     update_poetry_dependencies()
     # {% endif %}
+    # {% if cookiecutter.packaging == 'uv' %}
+    update_uv_dependencies()
+    # {% endif %}
     remove_unneeded_files()
 
 
@@ -50,6 +53,28 @@ def update_poetry_dependencies(pyproject_path: str = "pyproject.toml"):
             if match := regex.match(line):
                 name = match.group(1)
                 output += f'{name} = "^{packages[name.lower()]}"\n'
+            else:
+                output += line
+    with open(pyproject_path, "w") as f:
+        f.write(output)
+
+
+def update_uv_dependencies(pyproject_path: str = "pyproject.toml"):
+    """Patch the versions of packages in pyproject.toml."""
+    packages = read_package_versions(
+        "doc-requirements.txt", "dev-requirements.txt", "requirements.txt"
+    )
+
+    output = ""
+    regex = re.compile(r'"([A-Za-z0-9_\-]+)\s*([=<>!~]+)\s*VERSION"')
+    with open(pyproject_path) as f:
+        for line in f.readlines():
+            if match := regex.match(line.strip()):
+                name = match.group(1)
+                operator = match.group(2)
+                version = packages[name.lower()]
+                comma = "," if line.strip().endswith(",") else ""
+                output += f'    "{name}{operator}{version}"{comma}\n'
             else:
                 output += line
     with open(pyproject_path, "w") as f:

@@ -1,6 +1,6 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
-{%- if cookiecutter.packaging == "poetry" %}
+{%- if cookiecutter.packaging == "poetry"%}
 version = "0.1.0"
 {%- else %}
 dynamic = ["version"]
@@ -12,14 +12,41 @@ authors = [
     {name = "Imperial College London RSE Team", email = "ict-rse-team@imperial.ac.uk"},
 {%- endif %}
 ]
-{%- if cookiecutter.packaging == "pip-tools" %}
 {%- if cookiecutter.use_bsd3_license %}
+{%- if cookiecutter.packaging != "poetry" %}
 license = "BSD-3-Clause"
 license-files = ["LICENSE"]
+{%- else %}
+license = {text = "BSD-3-Clause"}
 {%- endif %}
+{%- endif %}
+{%- if cookiecutter.packaging != "poetry" %}
 requires-python = ">=3.13"
-dependencies = []
 
+dependencies = []
+{% if cookiecutter.packaging == "uv" %}
+[dependency-groups]
+dev = [
+    "ruff>=VERSION",
+    "mypy>=VERSION",
+    "pip-tools>=VERSION",
+    "pre-commit>=VERSION",
+    "pytest>=VERSION",
+    "pytest-cov>=VERSION",
+    "pytest-mock>=VERSION",
+]
+{% if cookiecutter.mkdocs -%}
+doc = [
+    "mkdocs>=VERSION",
+    "mkdocstrings>=VERSION",
+    "mkdocstrings-python>=VERSION",
+    "mkdocs-material>=VERSION",
+    "mkdocs-gen-files>=VERSION",
+    "mkdocs-literate-nav>=VERSION",
+    "mkdocs-section-index>=VERSION",
+]
+{%- endif %}
+{%- else %}
 [project.optional-dependencies]
 dev = ["ruff", "mypy", "pip-tools", "pre-commit", "pytest", "pytest-cov", "pytest-mock"]
 {% if cookiecutter.mkdocs -%}
@@ -34,10 +61,8 @@ doc = [
 ]
 {%- endif %}
 {%- endif %}
-{%- if cookiecutter.packaging == "poetry" %}
-{%- if cookiecutter.use_bsd3_license %}
-license = {text = "BSD-3-Clause"}
 {%- endif %}
+{%- if cookiecutter.packaging == "poetry" %}
 
 [tool.poetry.dependencies]
 python = "^3.13"
@@ -95,8 +120,7 @@ pydocstyle.convention = "google"
     "D100", # Missing docstring in public module
     "D104", # Missing docstring in public package
 ]
-
-{% if cookiecutter.packaging == "pip-tools" -%}
+{% if cookiecutter.packaging != "poetry" %}
 [build-system]
 requires = ["setuptools>=78", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
@@ -105,7 +129,7 @@ build-backend = "setuptools.build_meta"
 packages = ["{{ cookiecutter.project_slug }}"]
 
 [tool.setuptools_scm]
-{%- elif cookiecutter.packaging == "poetry" -%}
+{%- else %}
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"

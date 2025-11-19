@@ -13,54 +13,54 @@ To get started:
 1. [Download and install Poetry] following the instructions for your OS.
 1. Activate a git repository (required for `pre-commit`):
 
-   ```bash
-   git init
-   ```
+    ```bash
+    git init
+    ```
 
 1. Set up the virtual environment:
 
-   ```bash
-   poetry install
-   ```
+    ```bash
+    poetry install
+    ```
 
 1. Activate the virtual environment (see [Poetry docs][poetry activate] for more info):
 
-   ```bash
-   eval $(poetry env activate) # bash/Zsh/Csh
-   eval (poetry env activate) # Fish
-   Invoke-Expression (poetry env activate) # Powershell
-   ```
+    ```bash
+    eval $(poetry env activate) # bash/Zsh/Csh
+    eval (poetry env activate) # Fish
+    Invoke-Expression (poetry env activate) # Powershell
+    ```
 
 1. Install the pre-commit git hooks:
 
-   ```bash
-   pre-commit install
-   ```
+    ```bash
+    pre-commit install
+    ```
 
 1. Update the pre-commit hooks
 
-   ```bash
-   pre-commit autoupdate
-   ```
+    ```bash
+    pre-commit autoupdate
+    ```
 
 1. Run the main app:
 
-   ```bash
-   python -m {{ cookiecutter.project_slug }}
-   ```
+    ```bash
+    python -m {{ cookiecutter.project_slug }}
+    ```
 
 1. Run the tests:
 
-   ```bash
-   pytest
-   ```
+    ```bash
+    pytest
+    ```
 
 1. Create an initial commit (it's possible there might be some failures in pre-commit):
 
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   ```
+    ```bash
+    git add .
+    git commit -m "Initial commit"
+    ```
 
 ## Updating Dependencies
 
@@ -71,5 +71,6 @@ See the [Poetry] docs for managing dependencies.
 [pytest]: https://pytest.org/
 [GitHub Actions]: https://github.com/features/actions
 [pre-commit.ci]: https://pre-commit.ci
+[Imperial College Research Software Engineering Team]: https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/
 [Download and install Poetry]: https://python-poetry.org/docs/#installation
 [poetry activate]: https://python-poetry.org/docs/managing-environments/#activating-the-environment
