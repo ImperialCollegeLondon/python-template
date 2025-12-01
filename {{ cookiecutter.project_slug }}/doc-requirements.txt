@@ -73,7 +73,7 @@ mkdocstrings==0.30.1
     # via
     #   mkdocstrings-python
     #   {{ cookiecutter.project_slug }} (pyproject.toml)
-mkdocstrings-python==1.18.2
+mkdocstrings-python==2.0.0
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 packaging==25.0
     # via mkdocs
