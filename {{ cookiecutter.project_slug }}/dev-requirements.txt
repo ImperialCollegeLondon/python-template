@@ -24,7 +24,7 @@ mypy==1.19.0
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mypy-extensions==1.1.0
     # via mypy
-nodeenv==1.9.1
+nodeenv==1.10.0
     # via pre-commit
 packaging==25.0
     # via
