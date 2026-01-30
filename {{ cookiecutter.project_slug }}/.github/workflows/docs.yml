@@ -36,7 +36,7 @@ jobs:
         run: pipx install poetry
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: '3.14'
           cache: poetry
       - name: Install dependencies
         run: poetry install
@@ -45,7 +45,7 @@ jobs:
 {%- elif cookiecutter.packaging == 'pip-tools' %}
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: '3.14'
           cache: pip
       - name: Install dependencies
         run: pip install -r doc-requirements.txt
@@ -58,9 +58,9 @@ jobs:
           enable-cache: true
           prune-cache: false
           activate-environment: true
-          python-version: 3.13
+          python-version: 3.14
       - name: Set up Python
-        run: uv python install 3.13
+        run: uv python install 3.14
       - name: Install dependencies
         run: uv sync --group doc
       - name: Build docs with MkDocs

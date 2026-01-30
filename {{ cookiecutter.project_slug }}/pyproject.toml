@@ -21,7 +21,7 @@ license = {text = "BSD-3-Clause"}
 {%- endif %}
 {%- endif %}
 {%- if cookiecutter.packaging != "poetry" %}
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 
 dependencies = []
 {% if cookiecutter.packaging == "uv" %}
@@ -65,7 +65,7 @@ doc = [
 {%- if cookiecutter.packaging == "poetry" %}
 
 [tool.poetry.dependencies]
-python = "^3.13"
+python = "^3.14"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "VERSION"
@@ -102,7 +102,7 @@ disallow_untyped_defs = false
 addopts = "-v -p no:warnings --cov={{ cookiecutter.project_slug }} --cov-branch --cov-report=html --cov-report=xml --doctest-modules --ignore={{ cookiecutter.project_slug }}/__main__.py --ignore=docs/"
 
 [tool.ruff]
-target-version = "py313"
+target-version = "py314"
 
 [tool.ruff.lint]
 select = [
