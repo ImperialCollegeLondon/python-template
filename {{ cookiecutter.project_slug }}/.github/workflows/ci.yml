@@ -21,7 +21,7 @@ jobs:
 {%- if cookiecutter.use_macos_ci_runner %}
           - macos-latest
 {%- endif %}
-        python-version: ['3.13']
+        python-version: ['3.14']
 
     steps:
       - uses: actions/checkout@v4
