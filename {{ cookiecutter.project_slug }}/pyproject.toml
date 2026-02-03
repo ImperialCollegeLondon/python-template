@@ -29,7 +29,6 @@ dependencies = []
 dev = [
     "ruff>=VERSION",
     "mypy>=VERSION",
-    "pip-tools>=VERSION",
     "pre-commit>=VERSION",
     "pytest>=VERSION",
     "pytest-cov>=VERSION",
