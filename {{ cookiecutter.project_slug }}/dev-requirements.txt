@@ -30,7 +30,7 @@ packaging==26.0
     # via
     #   build
     #   pytest
-pip-tools==7.5.2
+pip-tools==7.5.3
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 platformdirs==4.5.1
     # via virtualenv
