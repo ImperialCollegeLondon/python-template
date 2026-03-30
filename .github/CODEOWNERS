@@ -3,4 +3,4 @@
 
 # Exclude the following files as they are often updated by bots
 .pre-commit-config.yaml
-{{\ cookiecutter.project_slug\ }}/*requirements.txt
+*requirements.txt
