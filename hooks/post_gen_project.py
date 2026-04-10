@@ -28,7 +28,7 @@ def main():
 
 def read_package_versions(*filenames: str) -> dict[str, str]:
     """Read package versions from *requirements.txt."""
-    regex = re.compile("^([^# ]+)==(.+)$")
+    regex = re.compile(r"^([^# ]+)==(.+)$")
     packages: dict[str, str] = {}
     for filename in filenames:
         with open(filename) as f:
@@ -47,7 +47,7 @@ def update_poetry_dependencies(pyproject_path: str = "pyproject.toml"):
     )
 
     output = ""
-    regex = re.compile('^([^ ]+) = "VERSION"$')
+    regex = re.compile(r'^([^ ]+) = "VERSION"$')
     with open(pyproject_path) as f:
         for line in f.readlines():
             if match := regex.match(line):
