@@ -4,19 +4,19 @@
 #
 #    pip-compile --extra=dev --output-file=dev-requirements.txt pyproject.toml
 #
-build==1.4.0
+build==1.4.2
     # via pip-tools
 cfgv==3.5.0
     # via pre-commit
-click==8.3.1
+click==8.3.2
     # via pip-tools
-coverage[toml]==7.13.3
+coverage[toml]==7.13.5
     # via pytest-cov
 distlib==0.4.0
     # via virtualenv
 filelock==3.25.2
     # via virtualenv
-identify==2.6.16
+identify==2.6.18
     # via pre-commit
 iniconfig==2.3.0
     # via pytest
@@ -32,7 +32,7 @@ packaging==26.0
     #   pytest
 pip-tools==7.5.3
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
-platformdirs==4.9.4
+platformdirs==4.9.6
     # via virtualenv
 pluggy==1.6.0
     # via pytest
@@ -42,22 +42,22 @@ pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-pytest==9.0.2
+pytest==9.0.3
     # via
     #   {{ cookiecutter.project_slug }} (pyproject.toml)
     #   pytest-cov
     #   pytest-mock
-pytest-cov==7.0.0
+pytest-cov==7.1.0
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 pytest-mock==3.15.1
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 pyyaml==6.0.3
     # via pre-commit
-ruff==0.15.9
+ruff==0.15.10
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 typing-extensions==4.15.0
     # via mypy
-virtualenv==20.36.1
+virtualenv==21.2.1
     # via pre-commit
 wheel==0.46.3
     # via pip-tools
