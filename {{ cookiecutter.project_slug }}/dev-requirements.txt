@@ -4,7 +4,7 @@
 #
 #    pip-compile --extra=dev --output-file=dev-requirements.txt pyproject.toml
 #
-build==1.4.2
+build==1.4.3
     # via pip-tools
 cfgv==3.5.0
     # via pre-commit
@@ -20,7 +20,7 @@ identify==2.6.18
     # via pre-commit
 iniconfig==2.3.0
     # via pytest
-mypy==1.20.0
+mypy==1.20.1
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mypy-extensions==1.1.0
     # via mypy
@@ -57,7 +57,7 @@ ruff==0.15.10
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 typing-extensions==4.15.0
     # via mypy
-virtualenv==21.2.1
+virtualenv==21.2.3
     # via pre-commit
 wheel==0.46.3
     # via pip-tools
