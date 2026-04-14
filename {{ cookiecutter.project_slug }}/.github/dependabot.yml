@@ -12,6 +12,11 @@ updates:
     groups:
       python:
         patterns: ['*']
+    # NB: mkdocs v2 will include breaking changes.
+    # See: https://github.com/imperialcollegelondon/python-template/discussions/530
+    ignore:
+      - dependency-name: mkdocs
+        update-types: [version-update:semver-major]
   - package-ecosystem: github-actions
     directory: /
     schedule:

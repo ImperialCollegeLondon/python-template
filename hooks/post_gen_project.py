@@ -1,7 +1,7 @@
 import os
+import re
 from glob import glob
 from shutil import rmtree
-import re
 
 REMOVE_PATHS = (
     "{% if not cookiecutter.use_bsd3_license %}LICENSE{% endif %}",
@@ -28,7 +28,7 @@ def main():
 
 def read_package_versions(*filenames: str) -> dict[str, str]:
     """Read package versions from *requirements.txt."""
-    regex = re.compile("^([^# ]+)==(.+)$")
+    regex = re.compile(r"^([^# ]+)==(.+)$")
     packages: dict[str, str] = {}
     for filename in filenames:
         with open(filename) as f:
@@ -47,7 +47,7 @@ def update_poetry_dependencies(pyproject_path: str = "pyproject.toml"):
     )
 
     output = ""
-    regex = re.compile('^([^ ]+) = "VERSION"$')
+    regex = re.compile(r'^([^ ]+) = "VERSION"$')
     with open(pyproject_path) as f:
         for line in f.readlines():
             if match := regex.match(line):
@@ -66,15 +66,16 @@ def update_uv_dependencies(pyproject_path: str = "pyproject.toml"):
     )
 
     output = ""
-    regex = re.compile(r'"([A-Za-z0-9_\-]+)\s*([=<>!~]+)\s*VERSION"')
+    regex = re.compile(r'"([A-Za-z0-9_\-]+)\s*([=<>!~]+)\s*VERSION\s*(.*)"')
     with open(pyproject_path) as f:
         for line in f.readlines():
             if match := regex.match(line.strip()):
                 name = match.group(1)
                 operator = match.group(2)
                 version = packages[name.lower()]
+                trailing = match.group(3)
                 comma = "," if line.strip().endswith(",") else ""
-                output += f'    "{name}{operator}{version}"{comma}\n'
+                output += f'    "{name}{operator}{version}{trailing}"{comma}\n'
             else:
                 output += line
     with open(pyproject_path, "w") as f:

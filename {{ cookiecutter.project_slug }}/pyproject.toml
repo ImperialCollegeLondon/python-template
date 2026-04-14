@@ -36,7 +36,9 @@ dev = [
 ]
 {% if cookiecutter.mkdocs -%}
 doc = [
-    "mkdocs>=VERSION",
+    # NB: mkdocs v2 will include breaking changes.
+    # See: https://github.com/ImperialCollegeLondon/python-template/discussions/530
+    "mkdocs>=VERSION,<2.0.0",
     "mkdocstrings>=VERSION",
     "mkdocstrings-python>=VERSION",
     "mkdocs-material>=VERSION",
