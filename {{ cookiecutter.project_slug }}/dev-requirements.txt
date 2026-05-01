@@ -4,29 +4,29 @@
 #
 #    pip-compile --extra=dev --output-file=dev-requirements.txt pyproject.toml
 #
-build==1.4.3
+build==1.5.0
     # via pip-tools
 cfgv==3.5.0
     # via pre-commit
-click==8.3.2
+click==8.3.3
     # via pip-tools
 coverage[toml]==7.13.5
     # via pytest-cov
 distlib==0.4.0
     # via virtualenv
-filelock==3.25.2
+filelock==3.29.0
     # via virtualenv
-identify==2.6.18
+identify==2.6.19
     # via pre-commit
 iniconfig==2.3.0
     # via pytest
-mypy==1.20.1
+mypy==1.20.2
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 mypy-extensions==1.1.0
     # via mypy
 nodeenv==1.10.0
     # via pre-commit
-packaging==26.0
+packaging==26.2
     # via
     #   build
     #   pytest
@@ -36,7 +36,7 @@ platformdirs==4.9.6
     # via virtualenv
 pluggy==1.6.0
     # via pytest
-pre-commit==4.5.1
+pre-commit==4.6.0
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 pyproject-hooks==1.2.0
     # via
@@ -53,13 +53,13 @@ pytest-mock==3.15.1
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 pyyaml==6.0.3
     # via pre-commit
-ruff==0.15.10
+ruff==0.15.12
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 typing-extensions==4.15.0
     # via mypy
-virtualenv==21.2.3
+virtualenv==21.3.0
     # via pre-commit
-wheel==0.46.3
+wheel==0.47.0
     # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
