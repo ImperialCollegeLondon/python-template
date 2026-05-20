@@ -47,7 +47,7 @@ jobs:
 
       - name: Run tests
         working-directory: my_project
-        run: uv run pytest
+        run: uv run -m pytest
 
       - name: Run pre-commit hooks for project
         working-directory: my_project
