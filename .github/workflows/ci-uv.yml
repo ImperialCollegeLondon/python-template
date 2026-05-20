@@ -25,13 +25,8 @@ jobs:
           prune-cache: false
           python-version: ${{ matrix.python-version }}
 
-      - uses: actions/setup-python@v6
-        with:
-          python-version: ${{ matrix.python-version }}
-          cache: pip
-
       - name: Install dependencies
-        run: pip install -r dev-requirements.txt
+        run: uv sync
 
       - name: Run unit tests
         run: pytest
