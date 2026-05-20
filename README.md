@@ -26,10 +26,11 @@ problems or have any questions, please [raise an issue].
 To use this template for your own application:
 
 1. [Install `cookiecutter`] following the instructions for your OS.
-2. Create your own project using this template: `cookiecutter
+2. [Install `uv`] followiung the instructions for your OS.
+3. Create your own project using this template: `cookiecutter
 gh:ImperialCollegeLondon/python-template`
-3. Choose the options you want for your project
-4. To get started, follow the instructions in the readme of the newly created project
+4. Choose the options you want for your project
+5. To get started, follow the instructions in the readme of the newly created project
 
 [Install `cookiecutter`]: https://cookiecutter.readthedocs.io/en/stable/README.html#installation
 
