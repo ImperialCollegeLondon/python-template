@@ -7,25 +7,24 @@ def test_add_uv_dependencies_dev_only(monkeypatch):
     monkeypatch.setattr(post_gen_project, "MKDOCS_ENABLED", False)
     with patch("hooks.post_gen_project.subprocess.run") as mock_run:
         post_gen_project.add_uv_dependencies()
-    assert mock_run.call_count == 1
-    call = mock_run.call_args_list[0]
+    assert mock_run.call_count == 2
+    call = mock_run.call_args_list[1]
     assert call.args[0] == ["uv", "add", "--dev", *post_gen_project.DEV_DEPS]
     assert call.kwargs["check"] is True
-    assert call.kwargs["env"]["SETUPTOOLS_SCM_PRETEND_VERSION"] == "0.0.0"
 
 
 def test_add_uv_dependencies_includes_doc_group_when_mkdocs_enabled(monkeypatch):
     monkeypatch.setattr(post_gen_project, "MKDOCS_ENABLED", True)
     with patch("hooks.post_gen_project.subprocess.run") as mock_run:
         post_gen_project.add_uv_dependencies()
-    assert mock_run.call_count == 2
-    assert mock_run.call_args_list[0].args[0] == [
+    assert mock_run.call_count == 3
+    assert mock_run.call_args_list[1].args[0] == [
         "uv",
         "add",
         "--dev",
         *post_gen_project.DEV_DEPS,
     ]
-    assert mock_run.call_args_list[1].args[0] == [
+    assert mock_run.call_args_list[2].args[0] == [
         "uv",
         "add",
         "--group",

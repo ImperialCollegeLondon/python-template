@@ -1,5 +1,5 @@
-import os
 import subprocess
+import os
 from glob import glob
 from shutil import rmtree
 
@@ -42,11 +42,10 @@ def main():
 
 
 def add_uv_dependencies():
-    # setuptools-scm derives the version from git, which doesn't exist yet at generation time. # noqa: 501
-    env = {**os.environ, "SETUPTOOLS_SCM_PRETEND_VERSION": "0.0.0"}
-    subprocess.run(["uv", "add", "--dev", *DEV_DEPS], check=True, env=env)
+    subprocess.run(["git", "init"], check=True)
+    subprocess.run(["uv", "add", "--dev", *DEV_DEPS], check=True)
     if MKDOCS_ENABLED:
-        subprocess.run(["uv", "add", "--group", "doc", *DOC_DEPS], check=True, env=env)
+        subprocess.run(["uv", "add", "--group", "doc", *DOC_DEPS], check=True)
 
 
 def remove_unneeded_files():
