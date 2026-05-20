@@ -37,8 +37,19 @@ MKDOCS_ENABLED = "{{ cookiecutter.mkdocs }}" == "True"
 
 
 def main():
+    check_uv_installed()
     add_uv_dependencies()
     remove_unneeded_files()
+
+
+def check_uv_installed():
+    try:
+        subprocess.run(["uv", "--version"], check=True, stdout=subprocess.DEVNULL)
+    except FileNotFoundError:
+        print(
+            "Error: 'uv' command not found. Please install 'uv' to use this template."
+        )
+        exit(1)
 
 
 def add_uv_dependencies():

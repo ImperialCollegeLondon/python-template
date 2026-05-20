@@ -3,6 +3,23 @@ from unittest.mock import patch
 from hooks import post_gen_project
 
 
+def test_check_uv_installed_success(monkeypatch):
+    with patch("hooks.post_gen_project.subprocess.run") as mock_run:
+        post_gen_project.check_uv_installed()
+    mock_run.assert_called_once_with(["uv", "--version"], check=True, stdout=-3)
+
+
+def test_check_uv_installed_failure(monkeypatch):
+    with patch("hooks.post_gen_project.subprocess.run", side_effect=FileNotFoundError):
+        with patch("builtins.print") as mock_print:
+            with patch("builtins.exit") as mock_exit:
+                post_gen_project.check_uv_installed()
+    mock_print.assert_called_once_with(
+        "Error: 'uv' command not found. Please install 'uv' to use this template."
+    )
+    mock_exit.assert_called_once_with(1)
+
+
 def test_add_uv_dependencies_dev_only(monkeypatch):
     monkeypatch.setattr(post_gen_project, "MKDOCS_ENABLED", False)
     with patch("hooks.post_gen_project.subprocess.run") as mock_run:
