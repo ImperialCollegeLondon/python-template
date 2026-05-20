@@ -29,11 +29,11 @@ jobs:
         run: uv sync
 
       - name: Run unit tests
-        run: pytest
+        run: uv pytest
 
       - name: Create project from template
         # Choose default options
-        run: cookiecutter . --no-input packaging=uv rse_team_as_coauthor=true use_bsd3_license=true
+        run: uv cookiecutter . --no-input packaging=uv rse_team_as_coauthor=true use_bsd3_license=true
 
       - name: Install project dependencies
         working-directory: my_project
