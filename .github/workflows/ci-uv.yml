@@ -29,7 +29,7 @@ jobs:
         run: uv sync
 
       - name: Run unit tests
-        run: uv run -m pytest
+        run: uv run pytest
 
       - name: Create project from template
         # Choose default options
@@ -47,7 +47,7 @@ jobs:
 
       - name: Run tests
         working-directory: my_project
-        run: uv run -m pytest
+        run: uv run pytest
 
       - name: Run pre-commit hooks for project
         working-directory: my_project

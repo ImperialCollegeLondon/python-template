@@ -13,24 +13,24 @@ REMOVE_PATHS = (
 )
 
 DEV_DEPS = (
-    "ruff>=0.15.10",
-    "mypy>=1.20.1",
-    "pre-commit>=4.5.1",
-    "pytest>=9.0.3",
-    "pytest-cov>=7.1.0",
-    "pytest-mock>=3.15.1",
+    "ruff",
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
 )
 
 # mkdocs v2 will include breaking changes.
 # See: https://github.com/ImperialCollegeLondon/python-template/discussions/530
 DOC_DEPS = (
-    "mkdocs>=1.6.1,<2.0.0",
-    "mkdocstrings>=1.0.3",
-    "mkdocstrings-python>=2.0.3",
-    "mkdocs-material>=9.7.6",
-    "mkdocs-gen-files>=0.6.1",
-    "mkdocs-literate-nav>=0.6.3",
-    "mkdocs-section-index>=0.3.11",
+    "mkdocs<2",
+    "mkdocstrings",
+    "mkdocstrings-python",
+    "mkdocs-material",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-section-index",
 )
 
 MKDOCS_ENABLED = "{{ cookiecutter.mkdocs }}" == "True"

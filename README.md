@@ -1,5 +1,4 @@
 <!-- markdownlint-disable MD041 -->
-
 [![uv](https://github.com/ImperialCollegeLondon/python-template/actions/workflows/ci-uv.yml/badge.svg)](https://github.com/ImperialCollegeLondon/python-template/actions/workflows/ci-uv.yml)
 
 # Python project template
