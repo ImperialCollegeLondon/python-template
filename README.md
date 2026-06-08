@@ -1,4 +1,5 @@
 <!-- markdownlint-disable MD041 -->
+
 [![uv](https://github.com/ImperialCollegeLondon/python-template/actions/workflows/ci-uv.yml/badge.svg)](https://github.com/ImperialCollegeLondon/python-template/actions/workflows/ci-uv.yml)
 
 # Python project template
@@ -24,14 +25,11 @@ problems or have any questions, please [raise an issue].
 
 To use this template for your own application:
 
-1. [Install `cookiecutter`] following the instructions for your OS.
-2. [Install `uv`] followiung the instructions for your OS.
-3. Create your own project using this template: `cookiecutter
+1. [Install `uv`] followiung the instructions for your OS.
+2. Create your own project using this template: `uvx cookiecutter
 gh:ImperialCollegeLondon/python-template`
-4. Choose the options you want for your project
-5. To get started, follow the instructions in the readme of the newly created project
-
-[Install `cookiecutter`]: https://cookiecutter.readthedocs.io/en/stable/README.html#installation
+3. Choose the options you want for your project
+4. To get started, follow the instructions in the readme of the newly created project
 
 # Extra setup
 
