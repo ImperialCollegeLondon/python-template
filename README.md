@@ -25,7 +25,7 @@ problems or have any questions, please [raise an issue].
 
 To use this template for your own application:
 
-1. [Install `uv`] followiung the instructions for your OS.
+1. [Install `uv`] following the instructions for your OS.
 2. Create your own project using this template: `uvx cookiecutter
 gh:ImperialCollegeLondon/python-template`
 3. Choose the options you want for your project
