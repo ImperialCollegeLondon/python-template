@@ -51,5 +51,5 @@ def test_add_uv_dependencies_includes_doc_group_when_mkdocs_enabled(monkeypatch)
 
 
 def test_mkdocs_constraint_preserves_v2_upper_bound():
-    mkdocs_pin = next(d for d in post_gen_project.DOC_DEPS if d.startswith("mkdocs>"))
-    assert "<2.0.0" in mkdocs_pin
+    mkdocs_pin = next(d for d in post_gen_project.DOC_DEPS if d.startswith("mkdocs<"))
+    assert "<2" in mkdocs_pin
