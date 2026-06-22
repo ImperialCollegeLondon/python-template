@@ -20,7 +20,7 @@ repos:
       - id: check-github-actions
       - id: check-github-workflows
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.48.0
+    rev: v0.49.0
     hooks:
       - id: markdownlint-fix
         exclude: '{{ cookiecutter.project_slug }}'
