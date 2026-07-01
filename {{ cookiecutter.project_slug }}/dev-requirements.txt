@@ -8,13 +8,13 @@ build==1.5.0
     # via pip-tools
 cfgv==3.5.0
     # via pre-commit
-click==8.4.1
+click==8.4.2
     # via pip-tools
-coverage[toml]==7.14.1
+coverage[toml]==7.14.3
     # via pytest-cov
-distlib==0.4.0
+distlib==0.4.3
     # via virtualenv
-filelock==3.29.0
+filelock==3.29.4
     # via virtualenv
 identify==2.6.19
     # via pre-commit
@@ -42,7 +42,7 @@ pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-pytest==9.0.3
+pytest==9.1.1
     # via
     #   {{ cookiecutter.project_slug }} (pyproject.toml)
     #   pytest-cov
@@ -53,11 +53,11 @@ pytest-mock==3.15.1
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 pyyaml==6.0.3
     # via pre-commit
-ruff==0.15.15
+ruff==0.15.20
     # via {{ cookiecutter.project_slug }} (pyproject.toml)
 typing-extensions==4.15.0
     # via mypy
-virtualenv==21.4.2
+virtualenv==21.5.1
     # via pre-commit
 wheel==0.47.0
     # via pip-tools
