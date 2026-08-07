@@ -6,11 +6,6 @@
     "author_email": "jane_doe@imperial.ac.uk",
     "rse_team_as_coauthor": false,
     "use_bsd3_license": false,
-    "packaging": [
-        "poetry",
-        "pip-tools",
-        "uv"
-    ],
     "mkdocs": true,
     "add_precommit_workflows": true,
     "automerge_bot_prs": false,
