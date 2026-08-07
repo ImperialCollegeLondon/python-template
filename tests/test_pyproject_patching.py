@@ -6,7 +6,7 @@ from hooks import post_gen_project
 def test_check_uv_installed_success(monkeypatch):
     with patch("hooks.post_gen_project.subprocess.run") as mock_run:
         post_gen_project.check_uv_installed()
-    mock_run.assert_called_once_with(["uv", "--version"], check=True, stdout=-3)
+    mock_run.assert_called_once_with(["uv", "--version"], check=True, stdout=post_gen_project.subprocess.DEVNULL)
 
 
 def test_check_uv_installed_failure(monkeypatch):

@@ -20,9 +20,9 @@ To get started:
 1.  Activate a git repository (required for `pre-commit` and the package versioning with
     `setuptools-scm`):
 
-        ```bash
-        git init
-        ```
+    ```bash
+    git init
+    ```
 
 1.  Install the package and dependencies and set up the virtual environment:
 
@@ -33,16 +33,16 @@ To get started:
 1.  Activate the virtual environment, or just preface your commands with `uv run` to use
     the virtual environment (see [uv activate] for more info):
 
-        ```bash
-        source .venv/bin/activate
-        <command>
-        ```
+    ```bash
+    source .venv/bin/activate
+    <command>
+    ```
 
-        or
+    or
 
-        ```bash
-        uv run <command>
-        ```
+    ```bash
+    uv run <command>
+    ```
 
 1.  Install the pre-commit git hooks:
 
