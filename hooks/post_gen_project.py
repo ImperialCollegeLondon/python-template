@@ -9,6 +9,7 @@ REMOVE_PATHS = (
     "{% if not cookiecutter.automerge_bot_prs %}.github/workflows/auto-merge.yml{% endif %}",
     "{% if not cookiecutter.mkdocs %}docs{% endif %}",
     "{% if not cookiecutter.mkdocs %}.github/workflows/docs.yml{% endif %}",
+    "{% if not cookiecutter.github_issue_templates %}.github/ISSUE_TEMPLATE{% endif %}",
     "README.*.jinja",
 )
 
