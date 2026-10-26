@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD041 -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![uv](https://github.com/ImperialCollegeLondon/python-template/actions/workflows/ci-uv.yml/badge.svg)](https://github.com/ImperialCollegeLondon/python-template/actions/workflows/ci-uv.yml)
@@ -61,6 +61,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/"><img src="https://avatars.githubusercontent.com/u/23149834?v=4?s=100" width="100px;" alt="Alex Dewar"/><br /><sub><b>Alex Dewar</b></sub></a><br /><a href="https://github.com/ImperialCollegeLondon/python-template/commits?author=alexdewar" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/AdrianDAlessandro"><img src="https://avatars.githubusercontent.com/u/40875798?v=4?s=100" width="100px;" alt="Adrian D'Alessandro"/><br /><sub><b>Adrian D'Alessandro</b></sub></a><br /><a href="https://github.com/ImperialCollegeLondon/python-template/commits?author=AdrianDAlessandro" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Max-Gamill"><img src="https://avatars.githubusercontent.com/u/91465918?v=4?s=100" width="100px;" alt="Max Gamill"/><br /><sub><b>Max Gamill</b></sub></a><br /><a href="https://github.com/ImperialCollegeLondon/python-template/commits?author=Max-Gamill" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/mjademitchell"><img src="https://avatars.githubusercontent.com/u/242165951?v=4?s=100" width="100px;" alt="mjademitchell"/><br /><sub><b>mjademitchell</b></sub></a><br /><a href="https://github.com/ImperialCollegeLondon/python-template/commits?author=mjademitchell" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
