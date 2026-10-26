@@ -1,80 +1,55 @@
-from hooks.post_gen_project import read_package_versions, update_poetry_dependencies
-from pathlib import Path
-from unittest.mock import patch, Mock
+from unittest.mock import patch
+
+from hooks import post_gen_project
 
 
-def test_read_package_versions(tmp_path: Path):
-    REQUIREMENTS1 = """
-# This is a comment
-package_a==1.2.3
-package_b==4.5.6
-"""
-    path1 = tmp_path / "requirements1.txt"
-    with path1.open("w") as f:
-        f.write(REQUIREMENTS1)
-
-    # Single file
-    assert read_package_versions(str(path1)) == {
-        "package_a": "1.2.3",
-        "package_b": "4.5.6",
-    }
-
-    REQUIREMENTS2 = """
-package_b==1.2.3
-# Another comment
-package_c==4.5.6
-"""
-    path2 = tmp_path / "requirements2.txt"
-    with path2.open("w") as f:
-        f.write(REQUIREMENTS2)
-
-    # Multiple files
-    assert read_package_versions(str(path1), str(path2)) == {
-        "package_a": "1.2.3",
-        "package_b": "1.2.3",
-        "package_c": "4.5.6",
-    }
-
-    REQUIREMENTS3 = "package_B==1.2.3"
-    path3 = tmp_path / "requirements3.txt"
-    with path3.open("w") as f:
-        f.write(REQUIREMENTS3)
-
-    # Package names should be converted to lowercase
-    assert read_package_versions(str(path1), str(path3)) == {
-        "package_a": "1.2.3",
-        "package_b": "1.2.3",
-    }
+def test_check_uv_installed_success(monkeypatch):
+    with patch("hooks.post_gen_project.subprocess.run") as mock_run:
+        post_gen_project.check_uv_installed()
+    mock_run.assert_called_once_with(["uv", "--version"], check=True, stdout=-3)
 
 
-PYPROJECT = """[tool.poetry]
-name = "my_project"
-authors = [
-    "Jane Doe <jane_doe@imperial.ac.uk>",
-]
-
-[tool.poetry.dependencies]
-python = "^3.14"
-package_a = "{package_a}"
-
-[tool.poetry.group.dev.dependencies]
-package_b = "{package_b}"
-
-[tool.mypy]
-disallow_any_explicit = true
-
-def test_update_poetry_dependencies(tmp_path: Path):
-"""
+def test_check_uv_installed_failure(monkeypatch):
+    with patch("hooks.post_gen_project.subprocess.run", side_effect=FileNotFoundError):
+        with patch("builtins.print") as mock_print:
+            with patch("builtins.exit") as mock_exit:
+                post_gen_project.check_uv_installed()
+    mock_print.assert_called_once_with(
+        "Error: 'uv' command not found. Please install 'uv' to use this template."
+    )
+    mock_exit.assert_called_once_with(1)
 
 
-@patch("hooks.post_gen_project.read_package_versions")
-def test_update_poetry_dependencies(read_versions_mock: Mock, tmp_path: Path):
-    pyproject_path = tmp_path / "pyproject.toml"
-    with pyproject_path.open("w") as f:
-        f.write(PYPROJECT.format(package_a="VERSION", package_b="VERSION"))
+def test_add_uv_dependencies_dev_only(monkeypatch):
+    monkeypatch.setattr(post_gen_project, "MKDOCS_ENABLED", False)
+    with patch("hooks.post_gen_project.subprocess.run") as mock_run:
+        post_gen_project.add_uv_dependencies()
+    assert mock_run.call_count == 2
+    call = mock_run.call_args_list[1]
+    assert call.args[0] == ["uv", "add", "--dev", *post_gen_project.DEV_DEPS]
+    assert call.kwargs["check"] is True
 
-    read_versions_mock.return_value = {"package_a": "1.2.3", "package_b": "4.5.6"}
-    update_poetry_dependencies(str(pyproject_path))
-    with pyproject_path.open() as f:
-        content = f.read()
-    assert content == PYPROJECT.format(package_a="^1.2.3", package_b="^4.5.6")
+
+def test_add_uv_dependencies_includes_doc_group_when_mkdocs_enabled(monkeypatch):
+    monkeypatch.setattr(post_gen_project, "MKDOCS_ENABLED", True)
+    with patch("hooks.post_gen_project.subprocess.run") as mock_run:
+        post_gen_project.add_uv_dependencies()
+    assert mock_run.call_count == 3
+    assert mock_run.call_args_list[1].args[0] == [
+        "uv",
+        "add",
+        "--dev",
+        *post_gen_project.DEV_DEPS,
+    ]
+    assert mock_run.call_args_list[2].args[0] == [
+        "uv",
+        "add",
+        "--group",
+        "doc",
+        *post_gen_project.DOC_DEPS,
+    ]
+
+
+def test_mkdocs_constraint_preserves_v2_upper_bound():
+    mkdocs_pin = next(d for d in post_gen_project.DOC_DEPS if d.startswith("mkdocs<"))
+    assert "<2" in mkdocs_pin

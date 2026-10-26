@@ -1,0 +1,13 @@
+[project]
+name = "python-template"
+version = "0.1.0"
+requires-python = ">=3.14"
+
+[dependency-groups]
+dev = [
+    "cookiecutter>=2.7.1",
+    "pytest>=9.0.3",
+]
+
+[tool.uv]
+package = false

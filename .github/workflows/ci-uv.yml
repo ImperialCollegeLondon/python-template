@@ -16,7 +16,7 @@ jobs:
         python-version: ['3.14']
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v7
@@ -25,20 +25,20 @@ jobs:
           prune-cache: false
           python-version: ${{ matrix.python-version }}
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
 
       - name: Install dependencies
-        run: pip install -r dev-requirements.txt
+        run: uv sync
 
       - name: Run unit tests
-        run: pytest
+        run: uv run pytest
 
       - name: Create project from template
         # Choose default options
-        run: cookiecutter . --no-input packaging=uv rse_team_as_coauthor=true use_bsd3_license=true
+        run: uv run cookiecutter . --no-input packaging=uv rse_team_as_coauthor=true use_bsd3_license=true
 
       - name: Install project dependencies
         working-directory: my_project

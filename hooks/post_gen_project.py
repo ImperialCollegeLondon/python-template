@@ -1,5 +1,5 @@
+import subprocess
 import os
-import re
 from glob import glob
 from shutil import rmtree
 
@@ -7,79 +7,56 @@ REMOVE_PATHS = (
     "{% if not cookiecutter.use_bsd3_license %}LICENSE{% endif %}",
     "{% if not cookiecutter.add_precommit_workflows %}.github/workflows/pre-commit*.yml{% endif %}",
     "{% if not cookiecutter.automerge_bot_prs %}.github/workflows/auto-merge.yml{% endif %}",
-    "{% if cookiecutter.packaging != 'pip-tools' %}requirements.txt{% endif %}",
-    "{% if cookiecutter.packaging != 'pip-tools' %}dev-requirements.txt{% endif %}",
-    "{% if cookiecutter.packaging != 'pip-tools' or not cookiecutter.mkdocs %}doc-requirements.txt{% endif %}",
     "{% if not cookiecutter.mkdocs %}docs{% endif %}",
     "{% if not cookiecutter.mkdocs %}.github/workflows/docs.yml{% endif %}",
     "README.*.jinja",
 )
 
+DEV_DEPS = (
+    "ruff",
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+)
+
+# mkdocs v2 will include breaking changes.
+# See: https://github.com/ImperialCollegeLondon/python-template/discussions/530
+DOC_DEPS = (
+    "mkdocs<2",
+    "mkdocstrings",
+    "mkdocstrings-python",
+    "mkdocs-material",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-section-index",
+)
+
+MKDOCS_ENABLED = "{{ cookiecutter.mkdocs }}" == "True"
+
 
 def main():
-    # {% if cookiecutter.packaging == 'poetry' %}
-    update_poetry_dependencies()
-    # {% endif %}
-    # {% if cookiecutter.packaging == 'uv' %}
-    update_uv_dependencies()
-    # {% endif %}
+    check_uv_installed()
+    add_uv_dependencies()
     remove_unneeded_files()
 
 
-def read_package_versions(*filenames: str) -> dict[str, str]:
-    """Read package versions from *requirements.txt."""
-    regex = re.compile(r"^([^# ]+)==(.+)$")
-    packages: dict[str, str] = {}
-    for filename in filenames:
-        with open(filename) as f:
-            for line in f.readlines():
-                if match := regex.match(line):
-                    name = match.group(1).lower()
-                    version = match.group(2)
-                    packages[name] = version
-    return packages
+def check_uv_installed():
+    try:
+        subprocess.run(["uv", "--version"], check=True, stdout=subprocess.DEVNULL)
+    except FileNotFoundError:
+        print(
+            "Error: 'uv' command not found. Please install 'uv' to use this template."
+        )
+        exit(1)
 
 
-def update_poetry_dependencies(pyproject_path: str = "pyproject.toml"):
-    """Patch the versions of packages in pyproject.toml."""
-    packages = read_package_versions(
-        "doc-requirements.txt", "dev-requirements.txt", "requirements.txt"
-    )
-
-    output = ""
-    regex = re.compile(r'^([^ ]+) = "VERSION"$')
-    with open(pyproject_path) as f:
-        for line in f.readlines():
-            if match := regex.match(line):
-                name = match.group(1)
-                output += f'{name} = "^{packages[name.lower()]}"\n'
-            else:
-                output += line
-    with open(pyproject_path, "w") as f:
-        f.write(output)
-
-
-def update_uv_dependencies(pyproject_path: str = "pyproject.toml"):
-    """Patch the versions of packages in pyproject.toml."""
-    packages = read_package_versions(
-        "doc-requirements.txt", "dev-requirements.txt", "requirements.txt"
-    )
-
-    output = ""
-    regex = re.compile(r'"([A-Za-z0-9_\-]+)\s*([=<>!~]+)\s*VERSION\s*(.*)"')
-    with open(pyproject_path) as f:
-        for line in f.readlines():
-            if match := regex.match(line.strip()):
-                name = match.group(1)
-                operator = match.group(2)
-                version = packages[name.lower()]
-                trailing = match.group(3)
-                comma = "," if line.strip().endswith(",") else ""
-                output += f'    "{name}{operator}{version}{trailing}"{comma}\n'
-            else:
-                output += line
-    with open(pyproject_path, "w") as f:
-        f.write(output)
+def add_uv_dependencies():
+    subprocess.run(["git", "init"], check=True)
+    subprocess.run(["uv", "add", "--dev", *DEV_DEPS], check=True)
+    if MKDOCS_ENABLED:
+        subprocess.run(["uv", "add", "--group", "doc", *DOC_DEPS], check=True)
 
 
 def remove_unneeded_files():
