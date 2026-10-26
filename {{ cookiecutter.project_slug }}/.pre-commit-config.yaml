@@ -19,6 +19,7 @@ repos:
       - id: check-dependabot
       - id: check-github-actions
       - id: check-github-workflows
+      - id: check-github-issue-forms
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.17.2
     hooks:
