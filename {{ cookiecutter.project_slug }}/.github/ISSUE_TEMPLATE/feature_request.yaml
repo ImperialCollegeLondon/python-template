@@ -1,0 +1,30 @@
+name: Feature request
+description: Propose a new feature
+labels: [enhancement]
+body:
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Describe your proposed feature
+      description: >
+        A clear description of what the new feature should do.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Please describe the problem you are trying to address
+      description: >
+        A clear description of the problem the proposed feature addresses.
+      placeholder: >
+        E.g.: "As a user, I would like to be able to do X..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Describe alternatives considered (optional)
+      description: >
+        A clear description of alternative solutions to the problem you have considered,
+        whether that involves adding a different feature or making use of existing
+        functionality.

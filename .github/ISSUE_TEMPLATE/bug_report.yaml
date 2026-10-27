@@ -1,0 +1,32 @@
+name: Bug report
+description: File a bug report.
+labels: [bug]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: >
+        A clear and concise description of what the bug is, including error messages.
+    validations:
+      required: true
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: How to reproduce
+      description: >
+        Steps to reproduce the behaviour. Attach any relevant input file(s) below.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour (optional)
+      description: >
+        A clear and concise description of what you expected to happen.
+  - type: upload
+    id: upload
+    attributes:
+      label: Upload files (optional)
+      description: >
+        Upload any relevant files here.

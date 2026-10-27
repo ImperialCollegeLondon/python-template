@@ -1,0 +1,18 @@
+name: Question
+description: Ask the developers anything!
+labels: [question]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Enter your question here
+      description: >
+        Ask anything about the software and we'll get back to you shortly.
+    validations:
+      required: true
+  - type: upload
+    id: upload
+    attributes:
+      label: Upload files (optional)
+      description: >
+        Upload any additional files here.
