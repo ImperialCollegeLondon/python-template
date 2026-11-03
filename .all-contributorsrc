@@ -1,0 +1,88 @@
+{
+  "projectName": "python-template",
+  "projectOwner": "ImperialCollegeLondon",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "gitmoji",
+  "contributors": [
+    {
+      "login": "alexdewar",
+      "name": "Alex Dewar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23149834?v=4",
+      "profile": "https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "AdrianDAlessandro",
+      "name": "Adrian D'Alessandro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40875798?v=4",
+      "profile": "https://github.com/AdrianDAlessandro",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Max-Gamill",
+      "name": "Max Gamill",
+      "avatar_url": "https://avatars.githubusercontent.com/u/91465918?v=4",
+      "profile": "https://github.com/Max-Gamill",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mjademitchell",
+      "name": "mjademitchell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/242165951?v=4",
+      "profile": "https://github.com/mjademitchell",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Sahil590",
+      "name": "Sahil Raja",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56438860?v=4",
+      "profile": "https://github.com/Sahil590",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "cc-a",
+      "name": "Christopher Cave-Ayland",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16690296?v=4",
+      "profile": "https://github.com/cc-a",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "TinyMarsh",
+      "name": "Ryan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13540127?v=4",
+      "profile": "https://github.com/TinyMarsh",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "dalonsoa",
+      "name": "Diego Alonso Álvarez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6095790?v=4",
+      "profile": "https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/service-offering/research-software-engineering/",
+      "contributions": [
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true
+}
