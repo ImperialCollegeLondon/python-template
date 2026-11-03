@@ -19,6 +19,7 @@ repos:
       - id: check-dependabot
       - id: check-github-actions
       - id: check-github-workflows
+      - id: check-github-issue-forms
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.50.0
     hooks:
