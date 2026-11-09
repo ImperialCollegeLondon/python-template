@@ -28,6 +28,6 @@
         "use_windows_ci_runner": "Add a GitHub Actions runner for Windows (needed if your software targets Windows)",
         "use_macos_ci_runner": "Add a GitHub Actions runner for macOS (needed if your software targets macOS - ARM)",
         "automerge_bot_prs": "Whether to automatically merge PRs from bots including dependabot",
-        "add_ai_instructions": "Add basic infrastructure for AI development (e.g. copilot-instructions.md)"
+        "add_ai_instructions": "Add configuration files to guide AI agents"
     }
 }
