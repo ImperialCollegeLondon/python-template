@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+{% if cookiecutter.add_ai_instructions %}
+AGENTS.local.md
+{% endif %}

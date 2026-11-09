@@ -10,6 +10,8 @@ REMOVE_PATHS = (
     "{% if not cookiecutter.mkdocs %}docs{% endif %}",
     "{% if not cookiecutter.mkdocs %}.github/workflows/docs.yml{% endif %}",
     "{% if not cookiecutter.github_issue_templates %}.github/ISSUE_TEMPLATE{% endif %}",
+    "{% if not cookiecutter.add_ai_instructions %}.github/copilot-instructions.md{% endif %}",
+    "{% if not cookiecutter.add_ai_instructions %}AGENTS.md{% endif %}",
     "README.*.jinja",
 )
 
